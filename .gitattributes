@@ -1,0 +1,30 @@
+# Automatically normalize text file line endings based on OS
+* text=auto
+
+# Explicit line ending settings for specific file types
+*.sh text eol=lf      # Shell scripts should use LF (Linux/macOS)
+*.ps1 text eol=crlf   # PowerShell scripts should use CRLF (Windows)
+*.bat text eol=crlf   # Windows batch scripts should use CRLF
+*.md text eol=lf      # Markdown files should use LF
+*.yml text eol=lf     # YAML files should use LF
+*.json text eol=lf    # JSON files should use LF
+*.toml text eol=lf    # TOML files should use LF
+
+# Treat binary files correctly (they should not be converted)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+
+# Improve Git diff for specific file types
+*.md diff=markdown
+*.yml diff=yaml
+*.json diff=json
+*.toml diff=toml
+
+# Ignore changes in file permissions
+*.sh -diff
+*.ps1 -diff
+*.bat -diff

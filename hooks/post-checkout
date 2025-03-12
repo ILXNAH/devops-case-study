@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "Applying repository-specific Git configuration..."
+
+# Add git-config to the local repository configuration
+git config --local --add include.path "./git-config"
+
+# Verify that the configuration was applied successfully
+echo "Verifying applied configuration..."
+git config --local --list | grep "include.path"
+
+echo "Git configuration has been successfully applied!"

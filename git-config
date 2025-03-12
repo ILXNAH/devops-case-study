@@ -1,0 +1,18 @@
+[user]
+    name = ILXNAH
+    email = ILXNAH@tutanota.com
+
+[core]
+    autocrlf = true  # Ensures proper line endings for Windows
+
+[pull]
+    rebase = false  # Uses merge instead of rebase for pull operations
+
+[push]
+    default = simple  # Safe push behavior
+
+[branch]
+    autosetuprebase = always  # Automatically set up rebase when cloning
+
+[color]
+    ui = auto  # Enables colored Git output in the terminal

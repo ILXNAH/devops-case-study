@@ -1,0 +1,23 @@
+# Ignore local repository-specific Git configuration
+# git-config
+
+# Ignore system-generated files
+.DS_Store
+Thumbs.db
+
+# Ignore log files and temporary files
+# *.log
+# *.tmp
+# *.bak
+
+# Ignore compiled files
+# *.exe
+# *.dll
+# *.out
+# *.class
+
+# Ignore node_modules (for JS projects)
+# node_modules/
+
+# Ignore Python virtual environments
+# venv/

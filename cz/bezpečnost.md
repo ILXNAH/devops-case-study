@@ -31,12 +31,15 @@ RBAC (Role-Based Access Control) je bezpečnostní model používaný pro autori
 
 Best practice v K8s je oddělit ConfigMap od aplikace, což přináší několik klíčových výhod:
 - **Flexibilita a správa konfigurace**
-    - Umožňuje neměnný aplikační kód a flexibilní konfiguraci.
+    - Neměnný aplikační kód, flexibilní konfigurace – aplikace nemusí být znovu sestavena při změně konfigurace.
     - Podpora více prostředí (dev/test/prod) bez nutnosti měnit image aplikace.
     - Podpora sdílené konfigurace mezi více aplikacemi.
     - Možnost verzování konfigurace → snadná integrace s GitOps (ArgoCD, FluxCD).
     - Podpora rollbacku a rolloutu při změně konfigurace.
+- **Rolling Updates a Hot Reload**
+    - Podpora rolling updates – při změně ConfigMap lze provést postupnou aktualizaci podů bez výpadku služby.
     - Podpora hot reload → změna konfigurace bez restartu aplikace (pokud aplikace podporuje).
+    - Možnost rollbacku na předchozí verzi konfigurace bez restartu aplikace.
 - **CI/CD a testování**
     - Automatizace nasazení v CI/CD pipeline.
     - Podpora testování (unit testy, integrační testy).

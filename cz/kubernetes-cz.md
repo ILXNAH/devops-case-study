@@ -26,16 +26,22 @@ Hybridní přístup: WSL (WSL 2 má vlastní kernel, ale využívá kontejnerov�
 
 ## Co je kubelet, kubectl?
 ### Kubectl:
-- CLI nástroj pro interakci s K8s clustery.
+= CLI nástroj pro interakci s K8s clustery.
 - Slouží jako primární interface pro správu a kontrolu K8s zdrojů.
 - Používá se pro nasazování aplikací, škálování zátěží, monitoring, diagnostiku a administraci.
 - Uživatel má lokálně uložený konfigurační soubor umožňující přepínání mezi clustery.
 
 ### Kubelet:
-- Agent běžící na každém nodu (serveru, kde běží kontejnery, základní výpočetní jednotka clusteru).
+= Agent běžící na každém nodu (= server, kde běží kontejnery, základní výpočetní jednotka clusteru).
 - Řídí kontejnery a zajišťuje jejich požadovaný stav.
-- Interaguje s kontejnerovým runtime (např. Docker, containerd) přes API (CRI = Container Runtime Interface).
-- Pod = nejmenší K8s jednotka obsahující jeden či více kontejnerů (logické uspořádání sdílených zdrojů, orchestrace, zabezpečení atd.).
+- Vytváří a řídí jednotlivé pody a interaguje s kontejnerovým runtime (např. Docker, containerd) přes API (CRI = Container Runtime Interface).
+    - Pod = nejmenší K8s jednotka obsahující jeden či více kontejnerů; 
+        - seskupení může sloužit k:
+            - logickému uspořádání sdílených zdrojů (IP adresa, úložiště), 
+            - nastavení systému orchestrace (nasazování atd.),
+            - logování,
+            - zabezpečení (IP masking přes proxy server),
+            - formátování dat atd.
 
 ---
 

@@ -10,6 +10,7 @@ Thumbs.db
 # *.log
 # *.tmp
 # *.bak
+drafts/
 
 # Ignore compiled files
 # *.exe

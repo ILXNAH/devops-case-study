@@ -23,7 +23,7 @@ RBAC (Role-Based Access Control) je bezpečnostní model používaný pro autori
 
 ---
 
-## Jaký je rozdíl mezi Secretem a ConfigMapou?  
+## ConfigMap vs. Secret
 ### **ConfigMap:**  
 - Uchovává běžná konfigurační data (např. URL, název služby, proměnné, CLI args) v plaintextové podobě.  
 - Oddělení konfigurace slouží k jednodušší manipulaci a větší flexibilitě image, redukuje velikost image.  

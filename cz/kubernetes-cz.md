@@ -35,7 +35,7 @@ Hybridní přístup: WSL (WSL 2 má vlastní kernel, ale využívá kontejnerov�
 = Agent běžící na každém nodu (= server, kde běží kontejnery, základní výpočetní jednotka clusteru).
 - Řídí kontejnery a zajišťuje jejich požadovaný stav.
 - Vytváří a řídí jednotlivé pody a interaguje s kontejnerovým runtime (např. Docker, containerd) přes API (CRI = Container Runtime Interface).
-    - Pod = nejmenší K8s jednotka obsahující jeden či více kontejnerů; 
+    - **Pod** = nejmenší K8s jednotka obsahující jeden či více kontejnerů; 
         - seskupení může sloužit k:
             - logickému uspořádání sdílených zdrojů (IP adresa, úložiště), 
             - nastavení systému orchestrace (nasazování atd.),

@@ -12,6 +12,7 @@
 - Má vlastní OS = vlastní přidělené zdroje (CPU, RAM, disk, síť přidělené hypervizorem).
 - Běží na hypervizoru (např. VMware, VirtualBox, Hyper-V).
 - Vhodnější pro plnohodnotnou izolaci (např. kyberbezpečnost, testování malwaru v Kali Linux na TryHackMe Advent Of Cyber).
+
 Hybridní přístup: WSL (WSL 2 má vlastní kernel, ale využívá kontejnerové funkce namespaces a cgroups).
 
 ---

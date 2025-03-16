@@ -6,7 +6,10 @@ Celý stav infrastruktury a aplikací (**konfigurace, manifesty Kubernetes, Infr
 
 - GitOps umožňuje **rychlejší a efektivnější nasazení**, vyšší bezpečnost a spolehlivost.
 - Základním cílem je mít úložiště v Gitu, které obsahuje popis infrastruktury vč. všech změn, které jsou:
-  - **auditovatelné, verzované, podléhající kódovým revizím**.
+  - **auditovatelné,** 
+  - **verzované,**
+  - **automaticky testovatelné,** 
+  - **podléhající kódovým revizím**.
 - V Kubernetes funguje **GitOps operátor** (např. **Argo CD**), který sleduje repozitář a **automaticky aplikuje změny** na cluster nebo spustí nasazení (**pull request → review → schválení**), případně upozorní na manuální změny a vrátí je zpět.
 
 ---

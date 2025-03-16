@@ -2,6 +2,7 @@
 # git-config
 
 # Ignore system-generated files
+.vscode/
 .DS_Store
 Thumbs.db
 

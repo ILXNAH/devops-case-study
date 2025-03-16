@@ -1,3 +1,5 @@
+# Bezpečnost
+
 ## Co je RBAC?  
 RBAC (Role-Based Access Control) je bezpečnostní model používaný pro autorizaci koncových uživatelů na základě jejich nadefinovaných rolí.  
 - Jeho využití zjednodušuje procesy a politiky IAM, zefektivňuje přiřazování práv, chrání citlivá data a pomáhá k dodržování požadavků na ochranu údajů daných legislativními předpisy.  

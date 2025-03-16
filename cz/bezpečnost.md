@@ -22,7 +22,7 @@ etcd je distribuovaná databáze používaná v Kubernetes k ukládání stavu c
 
 ---
 
-## Jak byste řešili disaster recovery pro Kubernetes cluster včetně běžících aplikací v clusteru?  
+## Jak řešit disaster recovery pro Kubernetes cluster včetně běžících aplikací v clusteru?  
 - Hlavní je zálohování etcd a manifestů aplikací.  
 - Automatizace záloh etcd je možná přímo v K8s vytvořením ConfigMapy pro zálohovací **sh** skript a **CronJobu**, který bude zálohovat např. do AWS S3 nebo NFS.  
 - Manifesty se mohou automaticky zálohovat přes **GitOps** nebo open-source nástroj **Velero** (např. do AWS S3), který má podporu pro plánované zálohy.  
@@ -34,4 +34,4 @@ etcd je distribuovaná databáze používaná v Kubernetes k ukládání stavu c
   - Navolení typu zálohy **aktivní-aktivní** nebo **aktivní-pasivní**,  
   - Lokace úložišť záloh a jejich zabezpečení (šifrování),  
   - Definice nutné dostupnosti (High Availability).  
-- Je možná **automatizace obnovy/nasazení** zálohovaných dat clusteru přes **ArgoCD**.  
+- Je možná **automatizace obnovy/nasazení** zálohovaných dat clusteru přes **ArgoCD**.

@@ -2,7 +2,7 @@
 
 ## Co je kontejner a v čem se liší od VM?
 ### Kontejner:
-- Balíček mikroslužeb společně s jejich závislostmi a konfiguracemi (jeden proces per kontejner).
+= Balíček mikroslužeb společně s jejich závislostmi a konfiguracemi (jeden proces per kontejner).
 - Obsahuje pouze aplikaci, ne celý OS.
 - Je méně náročný na zdroje (sdílené s host OS).
 - Je rychlejší a lépe škálovatelný – využívaný v mikroservisní architektuře (např. telco, banky).
@@ -11,7 +11,7 @@
 ### Virtuální stroj (VM):
 - Má vlastní OS = vlastní přidělené zdroje (CPU, RAM, disk, síť přidělené hypervizorem).
 - Běží na hypervizoru (např. VMware, VirtualBox, Hyper-V).
-- Vhodnější pro plnohodnotnou izolaci (např. kyberbezpečnost, testování malwaru v Kali Linux na TryHackMe Advent Of Cyber).
+- Vhodnější pro plnohodnotnou izolaci (např. kyberbezpečnost, testování malwaru v Kali Linux).
 
 Hybridní přístup: WSL (WSL 2 má vlastní kernel, ale využívá kontejnerové funkce namespaces a cgroups).
 
@@ -58,6 +58,14 @@ Hybridní přístup: WSL (WSL 2 má vlastní kernel, ale využívá kontejnerov�
 
 ### cloud-controller-manager:
 - Integrace s cloudovými poskytovateli (např. správa externích load balancerů, síťových adres, úložišť).
+
+---
+
+## Co je etcd a k čemu slouží v Kubernetes?  
+etcd je distribuovaná databáze používaná v Kubernetes k ukládání stavu clusteru a jeho konfigurace.  
+- Při vytvoření nového podu nebo jiného objektu v K8s apiserver zapíše změnu do etcd.  
+- Controller a scheduler čtou informace z etcd (skrze apiserver) a provádějí na základě toho příslušné akce (např. správa replik a secrets, node monitoring, přiřazení podů na nody, vyvážení zátěže mezi nody).  
+- Běží jako cluster s více nody, kde je jeden leader a ostatní followers, které synchronizují data (je nutné zajistit HA/prevenci SPoF, protože apiserver závísí na etcd a nemohl by bez něj provádět žádné změny – škálování, nasazování, aktualizace).  
 
 ---
 

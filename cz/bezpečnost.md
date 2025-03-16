@@ -4,12 +4,6 @@
 RBAC (Role-Based Access Control) je bezpečnostní model používaný pro autorizaci koncových uživatelů na základě jejich nadefinovaných rolí.  
 - Jeho využití zjednodušuje procesy a politiky IAM, zefektivňuje přiřazování práv, chrání citlivá data a pomáhá k dodržování požadavků na ochranu údajů daných legislativními předpisy.  
 
-## Co je etcd a k čemu slouží v Kubernetes?  
-etcd je distribuovaná databáze používaná v Kubernetes k ukládání stavu clusteru a jeho konfigurace.  
-- Při vytvoření nového podu nebo jiného objektu v K8s apiserver zapíše změnu do etcd.  
-- Controller a scheduler čtou informace z etcd (skrze apiserver) a provádějí na základě toho příslušné akce (např. správa replik a secrets, node monitoring, přiřazení podů na nody, vyvážení zátěže mezi nody).  
-- Běží jako cluster s více nody, kde je jeden leader a ostatní followers, které synchronizují data (je nutné zajistit HA/prevenci SPoF, protože apiserver závísí na etcd a nemohl by bez něj provádět žádné změny – škálování, nasazování, aktualizace).  
-
 ---
 
 ## Jaký je rozdíl mezi Secretem a ConfigMapou?  

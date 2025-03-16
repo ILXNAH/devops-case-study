@@ -13,7 +13,7 @@ Celý stav infrastruktury a aplikací (**konfigurace, manifesty Kubernetes, Infr
 
 ---
 
-## Co je Helm?
+## Helm a jeho využití
 **Helm** je správce balíčků pro Kubernetes, který zjednodušuje a standardizuje nasazování aplikací do clusteru.
 - **Automatizuje nasazení a správu Kubernetes aplikací** pomocí tzv. **Helm Charts**.
 - **Umožňuje snadné verzování a rollback** aplikací.
@@ -22,7 +22,7 @@ Celý stav infrastruktury a aplikací (**konfigurace, manifesty Kubernetes, Infr
 
 ---
 
-## Co je Argo CD?
+## ArgoCD a jeho role v CI/CD pipeline
 **Argo CD** je **nástroj pro kontinuální nasazování (CD) v Kubernetes**, který automatizuje nasazování aplikací **podle GitOps principů**.
 - **Automatická synchronizace aplikací** s definovaným stavem v Git repozitáři (**Git jako zdroj pravdy**).
 - **Podpora Helm, Kustomize, Jsonnet a plain YAML manifestů**.

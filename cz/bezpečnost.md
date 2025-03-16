@@ -1,5 +1,22 @@
 # Bezpečnost (Security)
 
+## Co je a jak funguje SSL?
+**SSL** (= Secure Sockets Layer) je komunikační protokol/soubor pravidel a šifrovací standard z roku 1995, který vytváří bezpečné spojení mezi dvěma zařízeními nebo aplikacemi na síti.  
+
+- Pro důvěryhodnost a autentifikaci protistrany a vytvoření šifrovaného komunikačního kanálu se používá proces **“handshaku”** (v případě **TLS** zkrácený oproti SSL) a ověření pomocí **digitálního certifikátu** vydaného **certifikační autoritou (CA)**.  
+- Následně se **šifrují data mezi klientem a serverem**, aby se zabránilo odposlechu a manipulaci s daty, což zajišťuje **integritu dat**.  
+- **Původní SSL je zastaralý** (kvůli existujícím zranitelnostem), jeho nástupcem je **TLS**.
+
+### **Příklad:**
+1. **Prohlížeč se připojí k webovému serveru** přes `https://...`
+2. **Server odešle (TLS) certifikát**  
+3. **Prohlížeč ho ověří** (expirace, autorita, doména)  
+4. **Vytvoří se bezpečná šifrovaná relace**  
+5. **Prohlížeč a server bezpečně komunikují**  
+6. **Uživatel vidí ikonu zámku 🔒**, což potvrzuje bezpečnost spojení  
+
+---
+
 ## Co je RBAC?  
 RBAC (Role-Based Access Control) je bezpečnostní model používaný pro autorizaci koncových uživatelů na základě jejich nadefinovaných rolí.  
 - Jeho využití zjednodušuje procesy a politiky IAM, zefektivňuje přiřazování práv, chrání citlivá data a pomáhá k dodržování požadavků na ochranu údajů daných legislativními předpisy.  

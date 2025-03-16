@@ -46,23 +46,23 @@ Hybridní přístup: WSL (WSL 2 má vlastní kernel, ale využívá kontejnerov�
 ---
 
 ## Součásti Kubernetes Control Plane
-### kube-apiserver:
+### kube-apiserver
 - Centrální bod pro interakci s clusterem přes HTTP API.
 - Spravuje autentifikaci, autorizaci a validaci požadavků.
 
-### etcd:
+### etcd
 - Nerelační databáze pro uložení konfigurace a metadat clusteru.
 - Zajišťuje konzistenci a dostupnost stavu clusteru.
 - Kritická komponenta pro obnovu a správu clusteru.
 
-### kube-scheduler:
+### kube-scheduler
 - Rozhoduje o umístění podů na konkrétní nodes.
 - Vyhodnocuje dostupné zdroje a pravidla.
 
-### kube-controller-manager:
+### kube-controller-manager
 - Spravuje kontrolery pro logiku K8s API (správa replik podů, škálování, nasazení, monitoring, dostupnost podů při selhání).
 
-### cloud-controller-manager:
+### cloud-controller-manager
 - Integrace s cloudovými poskytovateli (např. správa externích load balancerů, síťových adres, úložišť).
 
 ---

@@ -8,6 +8,8 @@ etcd je distribuovaná databáze používaná v Kubernetes k ukládání stavu c
 - Controller a scheduler čtou informace z etcd (skrze apiserver) a provádějí na základě toho příslušné akce (např. správa replik a secrets, node monitoring, přiřazení podů na nody, vyvážení zátěže mezi nody).  
 - Běží jako cluster s více nody, kde je jeden leader a ostatní followers, které synchronizují data (je nutné zajistit HA/prevenci SPoF, protože apiserver závísí na etcd a nemohl by bez něj provádět žádné změny – škálování, nasazování, aktualizace).  
 
+---
+
 ## Jaký je rozdíl mezi Secretem a ConfigMapou?  
 ### **ConfigMap:**  
 - Uchovává běžná konfigurační data (např. URL, název služby, proměnné, CLI args) v plaintextové podobě.  
@@ -17,6 +19,8 @@ etcd je distribuovaná databáze používaná v Kubernetes k ukládání stavu c
 - Uchovává citlivá data (např. hesla, API klíče, certifikáty, tokeny) v textu zakódovaném base-64.  
 - Oproti ConfigMap má limitaci velikosti na 1 MB (kvůli ukládání na etcd).  
 - Možnost dodatečného zabezpečení: skrze politiku RBAC (role-based access control) a šifrování.  
+
+---
 
 ## Jak byste řešili disaster recovery pro Kubernetes cluster včetně běžících aplikací v clusteru?  
 - Hlavní je zálohování etcd a manifestů aplikací.  

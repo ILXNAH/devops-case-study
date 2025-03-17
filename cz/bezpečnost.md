@@ -34,9 +34,9 @@ V Kubernetes je klíčové efektivně a bezpečně spravovat konfiguraci aplikac
 #### Výhody Oddělení ConfigMap od Aplikace (Kubernetes Best Practice)
 - **Flexibilita a správa konfigurace**
     - Neměnný aplikační kód, flexibilní konfigurace – aplikace nemusí být znovu sestavena při změně konfigurace.
-    - Podpora více prostředí (dev/test/prod) bez nutnosti měnit image aplikace.
+    - Podpora více prostředí (dev/test/prod) bez nutnosti měnit [image](https://github.com/ILXNAH/devops-case-study/blob/main/cz/kubernetes-cz.md#image-vs-kontejner) aplikace.
     - Podpora sdílené konfigurace mezi více aplikacemi.
-    - Možnost verzování konfigurace → snadná integrace s GitOps (ArgoCD, FluxCD).
+    - Možnost verzování konfigurace → snadná integrace s [GitOps](https://github.com/ILXNAH/devops-case-study/blob/main/cz/gitops-cz.md#gitops---definice-a-funkce) ([ArgoCD](https://github.com/ILXNAH/devops-case-study/blob/main/cz/gitops-cz.md#argocd-a-jeho-role-v-cicd-pipeline), FluxCD).
     - Podpora rollbacku a rolloutu při změně konfigurace.
 - **Rolling Updates a Hot Reload**
     - Podpora rolling updates – při změně ConfigMap lze provést postupnou aktualizaci podů bez výpadku služby.
@@ -45,10 +45,10 @@ V Kubernetes je klíčové efektivně a bezpečně spravovat konfiguraci aplikac
 - **CI/CD a testování**
     - Automatizace nasazení v CI/CD pipeline.
     - Podpora testování (unit testy, integrační testy).
-    - Podpora monitoringu a logování → auditní stopa změn konfigurace.
+    - Podpora [monitoringu](https://github.com/ILXNAH/devops-case-study/blob/1b513dcb0c6fc21e8afbfbc47fab162180912cfc/cz/monitoring-cz.md) a logování → auditní stopa změn konfigurace.
 - **Efektivní správa konfigurace**
-    - Možnost používat stejný image v různých prostředích bez úpravy kódu (jen změna ConfigMap).
-    - Možnost sdílení ConfigMap mezi více aplikacemi.
+    - Možnost používat stejný image v různých prostředích bez úpravy kódu (jen změna [ConfigMap](https://github.com/ILXNAH/devops-case-study/blob/main/cz/bezpe%C4%8Dnost.md#configmap)).
+    - Možnost sdílení [ConfigMap](https://github.com/ILXNAH/devops-case-study/blob/main/cz/bezpe%C4%8Dnost.md#configmap) mezi více aplikacemi.
     - Vhodné pro ukládání proměnných prostředí, názvů služeb, URL a dalších parametrů.
 
 ### Secret
@@ -74,7 +74,7 @@ V Kubernetes je klíčové efektivně a bezpečně spravovat konfiguraci aplikac
 
 ## Zotavení po havárii (Disaster Recovery) pro Kubernetes cluster
 - Hlavní je zálohování etcd a manifestů aplikací.  
-- Automatizace záloh etcd je možná přímo v K8s vytvořením ConfigMapy pro zálohovací **sh** skript a **CronJobu**, který bude zálohovat např. do AWS S3 nebo NFS.  
+- Automatizace záloh etcd je možná přímo v K8s vytvořením [ConfigMapy](https://github.com/ILXNAH/devops-case-study/blob/main/cz/bezpe%C4%8Dnost.md#configmap) pro zálohovací **sh** skript a **CronJobu**, který bude zálohovat např. do AWS S3 nebo NFS.  
 - Manifesty se mohou automaticky zálohovat přes [GitOps](https://github.com/ILXNAH/devops-case-study/blob/main/cz/gitops-cz.md#gitops---definice-a-funkce) nebo open-source nástroj **Velero** (např. do AWS S3), který má podporu pro plánované zálohy.  
 - Záloha **perzistentních dat PV/PVC a externích služeb** (v případě externího uložiště je třeba zapnout v cloudu snapshotování); pro plnou zálohu clusteru včetně **perzistentních dat** je možné nainstalovat a použít nástroje jako **Velero, Kasten K10** apod.  
 - Za předpokladu použití metodiky [GitOps](https://github.com/ILXNAH/devops-case-study/blob/main/cz/gitops-cz.md#gitops---definice-a-funkce) je specifický stav nasazení automaticky uložený v **Git repozitářích** (může být včetně [Secrets](https://github.com/ILXNAH/devops-case-study/blob/main/cz/bezpe%C4%8Dnost.md#secret) a [ConfigMaps](https://github.com/ILXNAH/devops-case-study/blob/main/cz/bezpe%C4%8Dnost.md#configmap)).  

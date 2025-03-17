@@ -1,6 +1,6 @@
 # Bezpečnost (Security)
 
-## Co je a jak funguje SSL?
+## Definice a mechanismus SSL/TLS
 **SSL** (= Secure Sockets Layer) je komunikační protokol/soubor pravidel a šifrovací standard z roku 1995, který vytváří bezpečné spojení mezi dvěma zařízeními nebo aplikacemi na síti.  
 
 - Pro důvěryhodnost a autentifikaci protistrany a vytvoření šifrovaného komunikačního kanálu se používá proces **“handshaku”** (v případě **TLS** zkrácený oproti SSL) a ověření pomocí **digitálního certifikátu** vydaného **certifikační autoritou (CA)**.  
@@ -70,7 +70,7 @@ Best practice v K8s je oddělit ConfigMap od aplikace, což přináší několik
 
 ---
 
-## Jak řešit disaster recovery pro Kubernetes cluster včetně běžících aplikací v clusteru?  
+## Disaster Recovery pro Kubernetes cluster
 - Hlavní je zálohování etcd a manifestů aplikací.  
 - Automatizace záloh etcd je možná přímo v K8s vytvořením ConfigMapy pro zálohovací **sh** skript a **CronJobu**, který bude zálohovat např. do AWS S3 nebo NFS.  
 - Manifesty se mohou automaticky zálohovat přes **GitOps** nebo open-source nástroj **Velero** (např. do AWS S3), který má podporu pro plánované zálohy.  

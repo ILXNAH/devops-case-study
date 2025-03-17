@@ -77,6 +77,30 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 
 ---
 
+## Image vs. Kontejner
+- **Image:** 
+    - Statická šablona pro vytvoření kontejneru. 
+    - Obsahuje informace, jako je konfigurace, knihovny a aplikace.
+- **Kontejner:**
+    - Běžící instance image, živý proces.
+    - Kontejner lze spustit, zastavit a odstranit, na rozdíl od image.
+
+---
+
+## Pod vs. Kontejner
+- **Pod** je nejmenší nasaditelná jednotka v systému Kubernetes.
+    - **Pod** může obsahovat jeden či více kontejnerů.
+    - **Pod** je spravován komponentou kubelet, což je agent běžící na každém nodu (uzlu) v clusteru.
+- **Kontejner** je běžící instance image, která je součástí podu.
+- Seskupení kontejnerů v podu je výhodné pro:
+    - Logické uspořádání a sdílení zdrojů (například IP adresy a úložiště).
+    - Konfiguraci systému orchestrace (například pro účely nasazování aplikací).
+    - Zajištění centralizovaného logování.
+    - Implementaci zabezpečení (například maskování IP adres pomocí proxy serveru).
+    - Potřeby formátování dat a podobné účely.
+
+---
+
 ## Co je to Namespace (Jmenný prostor)?
 - Namespace je jednotka seskupení v rámci Kubernetes clusteru, která slouží k logickému rozdělení prostředí.
     - Například podle aplikace, týmu, typu prostředí (vývojové, testovací, produkční) nebo pro organizaci objektů.
@@ -87,6 +111,33 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 
 ## Základní objekty v Kubernetes
 - Pod, Deployment, ReplicaSet, StatefulSet, DaemonSet, PersistentVolume, Service, Namespace, ConfigMap, Secret, Job ...
+
+---
+
+## Custom Resource Definitions (CRD)
+- Slouží k rozšíření Kubernetes o vlastní typy zdrojů **bez nutnosti zásahu do kódu**. Umožňují definovat a spravovat vlastní objekty.
+- Definice CRD se provádí vytvořením manifestu ve formátu YAML a následným nasazením pomocí příkazu `kubectl apply -f crd.yaml`.
+- Správa vlastních objektů probíhá **stejnými příkazy jako u standardních objektů Kubernetes**, například `kubectl get`, `kubectl describe`, `kubectl delete` a další.
+
+---
+
+## Definice a účel Kubernetes operátorů
+- **Kubernetes operátor** je speciální druh **aplikačně specifického kontroleru**, který umožňuje **automatizaci správy aplikací a zdrojů** v Kubernetes.  
+- **Hlavní účel** operátorů je zajistit **soulad aktuálního stavu aplikace v clusteru s požadovaným stavem**, který je definován v konfiguraci.  
+- Operátoři **rozšiřují funkcionalitu Kubernetes API** přidáním **vlastních kontrolerů a Custom Resource Definitions (CRD)**.  
+- Typické **funkce operátorů** zahrnují:
+  - **Automatizovanou správu stavových aplikací** (např. databází, message brokering systémů).
+  - **Automatické škálování, aktualizace a migrace aplikací**.
+  - **Automatizaci CI/CD pipeline** pro nasazování aplikací v GitOps workflow.
+  - **Monitorování a samoopravu aplikací** (detekce selhání, restart, predefinovaná náprava).
+  - **Správu zálohování a obnovy aplikací** (např. databázových instancí).
+  - **Přidání specifických API a zajištění konzistence** aplikací běžících v clusteru.
+
+### **Příklady Kubernetes operátorů:**
+- **Prometheus Operator** – správa monitoringu a metrik.
+- **Cert-Manager Operator** – automatizace správy TLS certifikátů.
+- **Istio Operator** – správa [Service Mesh](cz/bezpečnost.md#service-mesh-síť-služeb--co-to-je-a-jaké-známe) řešení.
+- **PostgreSQL Operator** – automatizovaná správa databází PostgreSQL v Kubernetes.
 
 ---
 
@@ -115,20 +166,6 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 - **Anotace:**
     - Anotace slouží k ukládání podrobných metadat, například časových razítek, verzí nebo odkazů na externí zdroje.
     - Anotace poskytují rozšířený kontextuální informace o objektu, ale nemají vliv na selekci objektů (podů, služeb, jmenných prostorů, Secretů, ConfigMap apod.).
-
----
-
-## Pod vs. Kontejner
-- **Pod** je nejmenší nasaditelná jednotka v systému Kubernetes.
-    - **Pod** může obsahovat jeden či více kontejnerů.
-    - **Pod** je spravován komponentou kubelet, což je agent běžící na každém nodu (uzlu) v clusteru.
-- **Kontejner** je běžící instance image, která je součástí podu.
-- Seskupení kontejnerů v podu je výhodné pro:
-    - Logické uspořádání a sdílení zdrojů (například IP adresy a úložiště).
-    - Konfiguraci systému orchestrace (například pro účely nasazování aplikací).
-    - Zajištění centralizovaného logování.
-    - Implementaci zabezpečení (například maskování IP adres pomocí proxy serveru).
-    - Potřeby formátování dat a podobné účely.
 
 ---
 

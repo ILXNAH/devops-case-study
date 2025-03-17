@@ -56,6 +56,20 @@ Best practice v K8s je oddělit ConfigMap od aplikace, což přináší několik
 
 ---
 
+## Service Mesh – co to je a jaké známe?
+- Konfigurovatelná softwarová vrstva pro architektury mikroslužeb.
+- Řídí a spravuje konektivitu mezi mikroslužbami, čímž zajišťuje jejich správnou funkčnost a celkovou funkčnost aplikace.
+- Poskytuje klíčové funkce, jako jsou:
+    - Zabezpečená komunikace: (maskování IP adres, šifrování pomocí mTLS).
+    - Vyhledávání služeb.
+    - Vyvažování zátěže (Load Balancing).
+    - Autentizace a autorizace služeb.
+- Klíčovou součástí je proxy server, který se obvykle nasazuje společně s každou mikroslužbou (**sidecar model**).
+- Často je integrován na kontejnerové orchestrátory (například Kubernetes).
+- Mezi nejrozšířenější nástroje v kontextu Kubernetes patří: **Istio**, **Linkerd**, **Consul**.
+
+---
+
 ## Jak řešit disaster recovery pro Kubernetes cluster včetně běžících aplikací v clusteru?  
 - Hlavní je zálohování etcd a manifestů aplikací.  
 - Automatizace záloh etcd je možná přímo v K8s vytvořením ConfigMapy pro zálohovací **sh** skript a **CronJobu**, který bude zálohovat např. do AWS S3 nebo NFS.  

@@ -136,7 +136,7 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 ### **Příklady Kubernetes operátorů:**
 - **Prometheus Operator** – správa monitoringu a metrik.
 - **Cert-Manager Operator** – automatizace správy TLS certifikátů.
-- **Istio Operator** – správa [Service Mesh](cz/bezpečnost.md#service-mesh-síť-služeb--co-to-je-a-jaké-známe) řešení.
+- **Istio Operator** – správa [Service Mesh](https://github.com/ILXNAH/devops-case-study/blob/main/cz/bezpe%C4%8Dnost.md#service-mesh-s%C3%AD%C5%A5-slu%C5%BEeb--co-to-je-a-jak%C3%A9-zn%C3%A1me) řešení.
 - **PostgreSQL Operator** – automatizovaná správa databází PostgreSQL v Kubernetes.
 
 ---

@@ -1,6 +1,6 @@
 # Kubernetes
 
-## Kontejner, virtuálního stroj (VM) a rozdíly mezi nimi
+## Kontejner, virtuální stroj (VM) a rozdíly mezi nimi
 ### Kontejner
 - Kontejner je balíček obsahující mikroslužbu spolu s jejími závislostmi a konfiguracemi. 
     - Typicky je navržen tak, aby v kontejneru běžel jeden proces.

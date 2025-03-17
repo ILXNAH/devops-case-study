@@ -75,7 +75,7 @@ V Kubernetes je klíčové efektivně a bezpečně spravovat konfiguraci aplikac
 ## Zotavení po havárii (Disaster Recovery) pro Kubernetes cluster
 - Hlavní je zálohování etcd a manifestů aplikací.  
 - Automatizace záloh etcd je možná přímo v K8s vytvořením ConfigMapy pro zálohovací **sh** skript a **CronJobu**, který bude zálohovat např. do AWS S3 nebo NFS.  
-- Manifesty se mohou automaticky zálohovat přes **GitOps** nebo open-source nástroj **Velero** (např. do AWS S3), který má podporu pro plánované zálohy.  
+- Manifesty se mohou automaticky zálohovat přes **[GitOps](https://github.com/ILXNAH/devops-case-study/blob/main/cz/gitops-cz.md#gitops---definice-a-funkce)** nebo open-source nástroj **Velero** (např. do AWS S3), který má podporu pro plánované zálohy.  
 - Záloha **perzistentních dat PV/PVC a externích služeb** (v případě externího uložiště je třeba zapnout v cloudu snapshotování); pro plnou zálohu clusteru včetně **perzistentních dat** je možné nainstalovat a použít nástroje jako **Velero, Kasten K10** apod.  
 - Za předpokladu použití metodiky **GitOps** je specifický stav nasazení automaticky uložený v **Git repozitářích** (může být včetně **Secrets** a **ConfigMaps**).  
 - Pro nastavení správné strategie zotavení po havárii je třeba specifikovat parametry pro:  

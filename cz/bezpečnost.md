@@ -84,4 +84,4 @@ V Kubernetes je klíčové efektivně a bezpečně spravovat konfiguraci aplikac
   - Navolení typu zálohy **aktivní-aktivní** nebo **aktivní-pasivní**,  
   - Lokace úložišť záloh a jejich zabezpečení (šifrování),  
   - Definice nutné dostupnosti (High Availability).  
-- Je možná **automatizace obnovy/nasazení** zálohovaných dat clusteru přes **ArgoCD**.
+- Je možná **automatizace obnovy/nasazení** zálohovaných dat clusteru přes **[ArgoCD](https://github.com/ILXNAH/devops-case-study/blob/main/cz/gitops-cz.md#argocd-a-jeho-role-v-cicd-pipeline)**.

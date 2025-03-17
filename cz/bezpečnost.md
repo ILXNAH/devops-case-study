@@ -58,7 +58,7 @@ V Kubernetes je klíčové efektivně a bezpečně spravovat konfiguraci aplikac
 
 ---
 
-## Service Mesh (Síť služeb) – co to je a jaké známe?
+## Service Mesh (Síť služeb)
 - Konfigurovatelná softwarová vrstva pro architektury mikroslužeb.
 - Řídí a spravuje konektivitu mezi mikroslužbami, čímž zajišťuje jejich správnou funkčnost a celkovou funkčnost aplikace.
 - Poskytuje klíčové funkce, jako jsou:

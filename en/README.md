@@ -8,6 +8,7 @@ Welcome to the English version of the DevOps case study. This directory contains
 - [Monitoring](monitoring.md)
 - [Networking](networking.md)
 - [Security](security.md)
+- [Sources](sources.md)
 
 ## How to Use This Directory
 - Each chapter is available as a separate Markdown file.

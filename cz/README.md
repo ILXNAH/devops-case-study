@@ -8,6 +8,7 @@ Vítejte v české verzi případové studie pro roli DevOps. Tento adresář ob
 - [Kubernetes](kubernetes-cz.md)
 - [Monitoring](monitoring-cz.md)
 - [Síťování](síťování.md)
+- [Zdroje](zdroje.md)
 
 ## Jak používat tento adresář
 - Každá kapitola je k dispozici jako samostatný soubor ve formátu Markdown.

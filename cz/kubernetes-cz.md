@@ -25,7 +25,7 @@ Hybridní přístup: WSL (WSL 2 má vlastní kernel, ale využívá kontejnerov�
 
 ---
 
-## Co je Kubectl a Kubelet?
+## Definice Kubectl a Kubelet
 ### Kubectl
 - Kubectl je nástroj příkazové řádky (CLI) určený pro interakci s Kubernetes clustery.
 - Slouží jako primární rozhraní pro správu a kontrolu zdrojů Kubernetes.

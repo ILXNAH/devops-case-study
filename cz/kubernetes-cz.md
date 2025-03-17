@@ -38,12 +38,6 @@ Hybridní přístup: WSL (WSL 2 má vlastní kernel, ale využívá kontejnerov�
 - Kubelet komunikuje s řídicí rovinou (Control Plane) a zajišťuje, že kontejnery jsou spuštěny a běží správně.
 - Vytváří a spravuje jednotlivé pody a komunikuje s kontejnerovým runtime (například Docker, containerd) prostřednictvím API rozhraní (CRI – Container Runtime Interface).
     - **Pod:** Pod je nejmenší adresovatelná jednotka v Kubernetes, která může obsahovat jeden nebo více kontejnerů.
-        - Seskupení kontejnerů v podu může sloužit k:
-            - Logickému uspořádání sdílených zdrojů (například IP adresa, úložiště).
-            - Konfiguraci systému orchestrace (například pro nasazování).
-            - Centralizovanému logování.
-            - Zabezpečení (například maskování IP adres pomocí proxy serveru).
-            - Formátování dat a podobně.
 
 ---
 
@@ -115,15 +109,26 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 ---
 
 ## Anotace vs. Labely
-- **Labely:** Identifikace a organizace objektů, např. pro nasazení, škálování.
-- **Anotace:** Ukládají metadata, např. časová razítka, verze, odkazy.
+- **Labely:**
+    - Labely se používají k identifikaci a organizaci objektů v Kubernetes (zejména pro účely výběru a filtrování).
+    - Selekce objektů na základě label je užitečná pro operace, jako je nasazování, aktualizace nebo škálování aplikací.
+- **Anotace:**
+    - Anotace slouží k ukládání podrobných metadat, například časových razítek, verzí nebo odkazů na externí zdroje.
+    - Anotace poskytují rozšířený kontextuální informace o objektu, ale nemají vliv na selekci objektů (podů, služeb, jmenných prostorů, Secretů, ConfigMap apod.).
 
 ---
 
 ## Pod vs. Kontejner
-- **Pod** je nejmenší nasaditelná jednotka v Kubernetes.
-- **Pod** může obsahovat jeden nebo více kontejnerů.
-- **Kontejner** je běžící instance image v rámci podu.
+- **Pod** je nejmenší nasaditelná jednotka v systému Kubernetes.
+    - **Pod** může obsahovat jeden či více kontejnerů.
+    - **Pod** je spravován komponentou kubelet, což je agent běžící na každém nodu (uzlu) v clusteru.
+- **Kontejner** je běžící instance image, která je součástí podu.
+- Seskupení kontejnerů v podu je výhodné pro:
+    - Logické uspořádání a sdílení zdrojů (například IP adresy a úložiště).
+    - Konfiguraci systému orchestrace (například pro účely nasazování aplikací).
+    - Zajištění centralizovaného logování.
+    - Implementaci zabezpečení (například maskování IP adres pomocí proxy serveru).
+    - Potřeby formátování dat a podobné účely.
 
 ---
 

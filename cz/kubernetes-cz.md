@@ -18,7 +18,7 @@ Hybridní přístup: WSL (WSL 2 má vlastní kernel, ale využívá kontejnerov�
 
 ---
 
-## Co je Kubernetes?
+## Definice Kubernetes
 - Kubernetes je open-source platforma pro orchestraci kontejnerů.
 - Automatizuje procesy nasazování, škálování a správy kontejnerizovaných aplikací.
 - Původně byl Kubernetes navržen společností Google a v současnosti je spravován pod záštitou organizace CNCF (Cloud Native Computing Foundation).

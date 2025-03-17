@@ -24,7 +24,7 @@
 ---
 
 ## ConfigMap vs. Secret
-V Kubernetes je klíčové efektivně a bezpečně spravovat konfiguraci aplikací.  **ConfigMap** a **Secret** jsou dva základní objekty, které slouží k ukládání konfiguračních dat, avšak s **zásadními rozdíly v bezpečnostním provedení**.  Volba mezi nimi závisí na citlivosti ukládaných dat.
+V Kubernetes je klíčové efektivně a bezpečně spravovat konfiguraci aplikací.  **ConfigMap** a **Secret** jsou dva základní objekty, které slouží k ukládání konfiguračních dat, avšak se **zásadními rozdíly v bezpečnostním provedení**.  Volba mezi nimi závisí na citlivosti ukládaných dat.
 
 ### **ConfigMap:**  
 - Uchovává běžná konfigurační data (např. URL, název služby, proměnné, CLI args) v plaintextové podobě.  

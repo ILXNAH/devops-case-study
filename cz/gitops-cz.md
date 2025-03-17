@@ -13,12 +13,52 @@ Celý stav infrastruktury a aplikací (**konfigurace, manifesty Kubernetes, Infr
 
 ---
 
-## Helm a jeho využití
-**Helm** je správce balíčků pro Kubernetes, který zjednodušuje a standardizuje nasazování aplikací do clusteru.
-- **Automatizuje nasazení a správu Kubernetes aplikací** pomocí tzv. **Helm Charts**.
-- **Umožňuje snadné verzování a rollback** aplikací.
-- **Podporuje parametrizaci a šablonování konfigurací**, což usnadňuje opakovatelné nasazení aplikací v různých prostředích.
-- Původně vyvinutý společností **Deis**, dnes součást Microsoftu.
+## Helm a jeho využití  
+**Helm** je správce balíčků pro Kubernetes, který zjednodušuje a standardizuje nasazování, správu a aktualizaci aplikací v Kubernetes clusterech. Usnadňuje orchestraci komplexních aplikací a umožňuje jejich deklarativní nasazení.  
+
+### Funkce a výhody Helm Chartu
+- **Zjednodušuje nasazení:** Automatizuje nasazení aplikací v Kubernetes pomocí balíčků **Helm Charts**.
+- **Umožňuje verzování a rollback:** Snadno verzuje nasazení aplikací a umožňuje rychlý rollback na předchozí verze.
+- **Podporuje konfiguraci napříč prostředími:** Parametrizace a šablonování konfigurací pro opakovatelné nasazení v různých prostředích.
+- **Zjednodušuje správu komplexních aplikací:** Spravuje složité aplikace s více závislostmi jako jeden celek.
+- **Usnadňuje sdílení a spolupráci:** Využití a sdílení hotových Helm Charts z veřejné knihovny.
+- **Integrace s GitOps:** Podpora automatizovaného nasazování s nástroji jako ArgoCD a FluxCD.
+- **Efektivní správa závislostí:** Jednoduchá správa závislostí a připojování externích služeb.
+
+### Struktura Helm Chartu
+Každý Helm Chart obsahuje několik základních souborů:  
+```plaintext
+my-chart/
+│── charts/          # Závislosti (jiné Helm Charts)
+│── templates/       # Kubernetes YAML šablony
+│── values.yaml      # Konfigurační soubor (přepsání defaultních hodnot)
+│── Chart.yaml       # Metadata chartu
+│── README.md        # Dokumentace k chartu
+```
+- **`values.yaml`** – definuje konfigurační hodnoty aplikace, které lze snadno měnit při nasazení.  
+- **`templates/`** – obsahuje Kubernetes manifesty ve formě šablon, které jsou vyplňovány podle `values.yaml`.  
+- **`Chart.yaml`** – definuje metadata chartu (název, verzi, popis).  
+
+### Praktické využití Helmu
+#### Nasazení aplikace pomocí Helmu
+```bash
+helm install moje-aplikace ./my-chart --namespace default
+```
+- **`install`** – příkaz k nasazení aplikace  
+- **`moje-aplikace`** – název aplikace  
+- **`./my-chart`** – cesta k Helm Chartu  
+
+#### Aktualizace aplikace pomocí Helmu
+```bash
+helm upgrade moje-aplikace ./my-chart
+```
+- **`upgrade`** – provede aktualizaci aplikace na základě nové konfigurace v chartu  
+
+#### Odstranění aplikace spravované Helmem
+```bash
+helm uninstall moje-aplikace
+```
+- **`uninstall`** – odstraní nasazenou aplikaci a uvolní přidělené zdroje  
 
 ---
 

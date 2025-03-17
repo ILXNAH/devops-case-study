@@ -7,7 +7,7 @@
 - Následně se **šifrují data mezi klientem a serverem**, aby se zabránilo odposlechu a manipulaci s daty, což zajišťuje **integritu dat**.  
 - **Původní SSL je zastaralý** (kvůli existujícím zranitelnostem), jeho nástupcem je **TLS**.
 
-### **Příklad:**
+### Příklad
 1. **Prohlížeč se připojí k webovému serveru** přes `https://...`
 2. **Server odešle (TLS) certifikát**  
 3. **Prohlížeč ho ověří** (expirace, autorita, doména)  

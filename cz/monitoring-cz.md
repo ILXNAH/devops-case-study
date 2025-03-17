@@ -10,10 +10,14 @@
 - **Podporuje vizualizaci dat do dashboardů**, například prostřednictvím integrace s nástrojem **Grafana**.
 - V [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main/cz/kubernetes-cz.md#kubernetes) se typicky nasazuje pomocí [Helm Chartu](https://github.com/ILXNAH/devops-case-study/blob/main/cz/gitops-cz.md#helm-a-jeho-vyu%C5%BEit%C3%AD).
 
+---
+
 ## Řešení zpracování logů v Kubernetes clusteru
 - **Pro shromažďování a zpracování logů:**  Nasazení **Fluentd** jako `DaemonSet` na každém nodu (uzlu) clusteru.
 - **Ukládání a indexování logů:** Odesílání logů například do Elasticsearch/ELK stacku (případně do AWS S3 nebo jiného úložiště, avšak s omezenějšími možnostmi).
 - **Vizualizace logů:** Prostřednictvím Grafany (integrované s [Prometheem](#prometheus)) nebo Kibany (přímo v ELK stacku).
+
+---
 
 ## Ukládání stavu aplikací v kontejnerech
 **Podle místa uložení:**

@@ -8,7 +8,7 @@
 - **Třídění a filtrování dat** pomocí časových řad a volitelných labelů. 
     - Pro pokročilé dotazování využívá flexibilní jazyk **PromQL**.
 - **Podporuje vizualizaci dat do dashboardů**, například prostřednictvím integrace s nástrojem **Grafana**.
-- V Kubernetes se typicky nasazuje pomocí [Helm Chartu](https://github.com/ILXNAH/devops-case-study/blob/main/cz/gitops-cz.md#helm-a-jeho-vyu%C5%BEit%C3%AD).
+- V [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main/cz/kubernetes-cz.md#kubernetes) se typicky nasazuje pomocí [Helm Chartu](https://github.com/ILXNAH/devops-case-study/blob/main/cz/gitops-cz.md#helm-a-jeho-vyu%C5%BEit%C3%AD).
 
 ## Řešení zpracování logů v Kubernetes clusteru
 - **Pro shromažďování a zpracování logů:**  Nasazení **Fluentd** jako `DaemonSet` na každém nodu (uzlu) clusteru.

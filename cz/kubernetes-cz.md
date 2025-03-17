@@ -1,12 +1,13 @@
 # Kubernetes
 
-## Co je kontejner a v čem se liší od VM?
+## Co je kontejner a jak se liší od virtuálního stroje (VM)?
 ### Kontejner
-= Balíček mikroslužeb společně s jejich závislostmi a konfiguracemi (jeden proces per kontejner).
-- Obsahuje pouze aplikaci, ne celý OS.
-- Je méně náročný na zdroje (sdílené s host OS).
-- Je rychlejší a lépe škálovatelný – využívaný v mikroservisní architektuře (např. telco, banky).
-- Osobní zkušenost: Docker a OpenShift (aplikační podpora + automatizace), méně Kubernetes (OpenShift je na Kubernetes založený).
+- Kontejner je balíček obsahující mikroslužbu spolu s jejími závislostmi a konfiguracemi. 
+    - Typicky je navržen tak, aby v kontejneru běžel jeden proces.
+- Obsahuje pouze aplikaci a nezahrnuje celý operační systém.
+- Má menší nároky na systémové zdroje, které jsou sdílené s hostitelským operačním systémem.
+- Je charakteristický rychlostí a dobrou škálovatelností, díky čemuž je hojně využíván v mikroservisních architekturách (například v telekomunikacích nebo bankovnictví).
+- Osobní zkušenost: Docker a OpenShift (aplikační podpora + automatizace), méně Kubernetes (OpenShift je platforma postavená na Kubernetes).
 
 ### Virtuální stroj (VM)
 - Má vlastní OS = vlastní přidělené zdroje (CPU, RAM, disk, síť přidělené hypervizorem).
@@ -17,87 +18,99 @@ Hybridní přístup: WSL (WSL 2 má vlastní kernel, ale využívá kontejnerov�
 
 ---
 
-## Co jsou Kubernetes?
-- Open-source orchestrátor kontejnerů.
-- Automatizuje nasazování, škálování a správu kontejnerizovaných aplikací.
-- Původně navrženo Googlem, nyní pod CNCF.
+## Co je Kubernetes?
+- Kubernetes je open-source platforma pro orchestraci kontejnerů.
+- Automatizuje procesy nasazování, škálování a správy kontejnerizovaných aplikací.
+- Původně byl Kubernetes navržen společností Google a v současnosti je spravován pod záštitou organizace CNCF (Cloud Native Computing Foundation).
 
 ---
 
-## Co je kubelet, kubectl?
+## Co je Kubectl a Kubelet?
 ### Kubectl
-= CLI nástroj pro interakci s K8s clustery.
-- Slouží jako primární interface pro správu a kontrolu K8s zdrojů.
-- Používá se pro nasazování aplikací, škálování zátěží, monitoring, diagnostiku a administraci.
-- Uživatel má lokálně uložený konfigurační soubor umožňující přepínání mezi clustery.
+- Kubectl je nástroj příkazové řádky (CLI) určený pro interakci s Kubernetes clustery.
+- Slouží jako primární rozhraní pro správu a kontrolu zdrojů Kubernetes.
+- Běžně se používá k nasazování aplikací, škálování zátěží, monitorování, diagnostice a administraci clusteru.
+- Uživatel má k dispozici lokálně uložený konfigurační soubor, který umožňuje snadné přepínání mezi různými clustery.
 
 ### Kubelet
-= Agent běžící na každém nodu (= server, kde běží kontejnery, základní výpočetní jednotka clusteru).
-- Řídí kontejnery a zajišťuje jejich požadovaný stav.
-- Vytváří a řídí jednotlivé pody a interaguje s kontejnerovým runtime (např. Docker, containerd) přes API (CRI = Container Runtime Interface).
-    - **Pod** = nejmenší K8s jednotka obsahující jeden či více kontejnerů; 
-        - seskupení může sloužit k:
-            - logickému uspořádání sdílených zdrojů (IP adresa, úložiště), 
-            - nastavení systému orchestrace (nasazování atd.),
-            - logování,
-            - zabezpečení (IP masking přes proxy server),
-            - formátování dat atd.
+- Kubelet je agent, který běží na každém nodu (uzlu), což je server, na kterém běží kontejnery a představuje základní výpočetní jednotku clusteru.
+- Kubelet řídí kontejnery a aktivně usiluje o dosažení a udržení jejich požadovaného stavu.
+- Kubelet komunikuje s řídicí rovinou (Control Plane) a zajišťuje, že kontejnery jsou spuštěny a běží správně.
+- Vytváří a spravuje jednotlivé pody a komunikuje s kontejnerovým runtime (například Docker, containerd) prostřednictvím API rozhraní (CRI – Container Runtime Interface).
+    - **Pod:** Pod je nejmenší adresovatelná jednotka v Kubernetes, která může obsahovat jeden nebo více kontejnerů.
+        - Seskupení kontejnerů v podu může sloužit k:
+            - Logickému uspořádání sdílených zdrojů (například IP adresa, úložiště).
+            - Konfiguraci systému orchestrace (například pro nasazování).
+            - Centralizovanému logování.
+            - Zabezpečení (například maskování IP adres pomocí proxy serveru).
+            - Formátování dat a podobně.
 
 ---
 
-## Součásti Kubernetes Control Plane
+## Součásti řídicí roviny Kubernetes (Control Plane)
 ### kube-apiserver
-- Centrální bod pro interakci s clusterem přes HTTP API.
-- Spravuje autentifikaci, autorizaci a validaci požadavků.
+- Představuje centrální bod pro interakci s clusterem prostřednictvím HTTP API.
+- Zajišťuje správu autentizace, autorizace a validaci příchozích požadavků.
+- Ukládá informace o stavu clusteru do etcd.
 
 ### etcd
-- Nerelační databáze pro uložení konfigurace a metadat clusteru.
-- Zajišťuje konzistenci a dostupnost stavu clusteru.
-- Kritická komponenta pro obnovu a správu clusteru.
+- Jedná se o nerelační databázi, která slouží k ukládání všech dat clusteru, včetně jeho konfigurace, aktuálního stavu, politik a metadat.
+- Zajišťuje konzistentní a dostupný stav clusteru.
+- Je to kriticky důležitá komponenta pro obnovu a celkovou správu clusteru.
 
 ### kube-scheduler
-- Rozhoduje o umístění podů na konkrétní nodes.
-- Vyhodnocuje dostupné zdroje a pravidla.
+- Komponenta zodpovědná za rozhodování o umístění podů na konkrétní nody.
+- Vyhodnocuje výběr nejvhodnější node na základě dostupných zdrojů, definovaných politik a pravidel.
 
 ### kube-controller-manager
-- Spravuje kontrolery pro logiku K8s API (správa replik podů, škálování, nasazení, monitoring, dostupnost podů při selhání).
+- Spravuje kontrolery, které implementují řídicí logiku chování Kubernetes API. Mezi typické funkce patří například:
+      - Správa počtu replik podů.
+      - Nasazování aplikací, verzování a škálování.
+      - Správa, monitorování, kontrola a aktualizace stavu nodů, zajištění dostupnosti podů (včetně migrace při selhání nodu).
 
 ### cloud-controller-manager
-- Integrace s cloudovými poskytovateli (např. správa externích load balancerů, síťových adres, úložišť).
+- Slouží k zajištění integrace Kubernetes s cloudovými poskytovateli (CSP) – volitelná komponenta.
+- Spravuje cloudové zdroje, jako jsou load balancery, disky a síťové adresy.
 
 ---
 
 ## Role etcd v Kubernetes
-etcd je distribuovaná databáze používaná v Kubernetes k ukládání stavu clusteru a jeho konfigurace.  
-- Při vytvoření nového podu nebo jiného objektu v K8s apiserver zapíše změnu do etcd.  
-- Controller a scheduler čtou informace z etcd (skrze apiserver) a provádějí na základě toho příslušné akce (např. správa replik a secrets, node monitoring, přiřazení podů na nody, vyvážení zátěže mezi nody).  
-- Běží jako cluster s více nody, kde je jeden leader a ostatní followers, které synchronizují data (je nutné zajistit HA/prevenci SPoF, protože apiserver závísí na etcd a nemohl by bez něj provádět žádné změny – škálování, nasazování, aktualizace).  
+etcd je distribuovaná databáze, která se v Kubernetes používá k ukládání stavu clusteru a jeho konfigurace.
+- Při vytvoření nového podu nebo jiného objektu v Kubernetes API server zapíše tuto změnu do etcd.
+- Řadiče (Controllers) a plánovač (Scheduler) čtou informace z etcd (prostřednictvím API serveru) a na základě těchto informací provádějí příslušné akce (například správa replik a Secretů, monitorování nodů, přiřazování podů k nodům, vyvažování zátěže mezi nody).
+- etcd běží jako cluster s více nody, kde jeden node funguje jako leader a ostatní jako followeři, kteří synchronizují data. 
+    - Je nezbytné zajistit vysokou dostupnost (HA) a prevenci selhání jednoho bodu (SPoF), protože API server je závislý na etcd a bez něj by nemohl provádět žádné změny v clusteru – například škálování, nasazování nebo aktualizace.
 
 ---
 
-## Co je to namespace?
-- Logické rozdělení clusteru pro oddělení aplikací (např. vývoj, test, produkce).
-- Může obsahovat vlastní pody, služby, ConfigMapy a další objekty.
+## Co je to Namespace (Jmenný prostor)?
+- Namespace je jednotka seskupení v rámci Kubernetes clusteru, která slouží k logickému rozdělení prostředí.
+    - Například podle aplikace, týmu, typu prostředí (vývojové, testovací, produkční) nebo pro organizaci objektů.
+- Jedná se o logické rozdělení clusteru pro izolaci aplikací (například vývojových, testovacích a produkčních prostředí).
+- Namespace může obsahovat vlastní prostředky, jako jsou Pody, Služby, ConfigMapy a další objekty (například ReplicaSet, Secret, Ingress a další).
 
 ---
 
 ## Základní objekty v Kubernetes
-- Pod, Deployment, ReplicaSet, StatefulSet, DaemonSet, PersistentVolume, Service, Namespace, ConfigMap, Secret, Job.
+- Pod, Deployment, ReplicaSet, StatefulSet, DaemonSet, PersistentVolume, Service, Namespace, ConfigMap, Secret, Job ...
 
 ---
 
-## Typy service v Kubernetes
-- **ClusterIP:** Interní IP pro komunikaci uvnitř clusteru.
-- **NodePort:** Přístup k aplikaci zvenčí přes pevně daný port každé node.
-- **LoadBalancer:** Externí Load Balancer s vlastní IP.
-- **ExternalName:** Překlad na externí DNS název bez proxy/load balancingu.
+## Typy Service (Služeb) v Kubernetes
+- **ClusterIP:** Zpřístupnění aplikace na interní IP adrese. Vhodné pro interní služby, dostupné pouze uvnitř clusteru.
+- **NodePort:** Kromě ClusterIP přidává možnost externího přístupu přes statický port na IP adrese každé node v clusteru (`IP:static_port`).
+- **LoadBalancer:** Zpřístupnění přes externí Load Balancer s vlastní veřejnou IP adresou. Ideální pro produkční aplikace s vysokým provozem.
+- **ExternalName:** Překlad na externí DNS název bez proxy nebo load balancingu. Používá se pro připojení ke službám mimo Kubernetes cluster (například externí služby nebo služby hostované jinde). Provoz je směrován přímo na externí hostname prostřednictvím CNAME záznamu poskytovaného DNS serverem Kubernetes.
 
 ---
 
-## Ephemeral storage
-- Úložiště existující pouze po dobu životního cyklu podu.
-- Po smazání nebo restartování podu je úložiště vyčištěno.
-- Používá se pro logy, cache nebo dočasné soubory.
+## Ephemeral storage (Dočasné úložiště)
+- Úložiště, které existuje pouze po dobu životního cyklu podu.
+- Po smazání nebo restartování podu se toto úložiště vymaže.
+- Používá se pro data, u kterých není vyžadováno dlouhodobé uchování, například procesní logy, cache nebo dočasné soubory obsahující tajné klíče či konfigurační data.
+- Obvykle je uloženo v lokálním úložišti příslušné node (například na disku fyzického serveru).
+- Specifikace se provádí v `Pod spec`
+- Jednotlivé typy `emptyDir`, `configMap`, `downwardAPI` a `secret` jsou spravovány kubeletem na každé node.
 
 ---
 

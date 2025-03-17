@@ -1,6 +1,6 @@
 # GitOps
 
-## Co je GitOps?
+## GitOps - definice a funkce
 GitOps je jedna z metodologií řízení **DevOps** (vývoje softwaru a provozu aplikací), která je založená na principu **Everything as Code**.  
 Celý stav infrastruktury a aplikací (**konfigurace, manifesty Kubernetes, Infrastructure as Code**) je popsán a uložen v open-source verzovacím systému (**VCS**) **Git**, tedy v Git repozitáři, který slouží jako jediný zdroj pravdy (**SSOT – Single Source of Truth**).
 - GitOps umožňuje **rychlejší a efektivnější nasazení**, vyšší bezpečnost a spolehlivost.

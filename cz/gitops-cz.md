@@ -16,7 +16,7 @@ Celý stav infrastruktury a aplikací (**konfigurace, manifesty Kubernetes, Infr
 ## Helm a jeho využití  
 **Helm** je správce balíčků pro Kubernetes, který zjednodušuje a standardizuje nasazování, správu a aktualizaci aplikací v Kubernetes clusterech. Usnadňuje orchestraci komplexních aplikací a umožňuje jejich deklarativní nasazení.  
 
-### Funkce a výhody Helm Chartu
+### Funkce a výhody Helmu
 - **Zjednodušuje nasazení:** Automatizuje nasazení aplikací v Kubernetes pomocí balíčků **Helm Charts**.
 - **Umožňuje verzování a rollback:** Snadno verzuje nasazení aplikací a umožňuje rychlý rollback na předchozí verze.
 - **Podporuje konfiguraci napříč prostředími:** Parametrizace a šablonování konfigurací pro opakovatelné nasazení v různých prostředích.
@@ -25,7 +25,7 @@ Celý stav infrastruktury a aplikací (**konfigurace, manifesty Kubernetes, Infr
 - **Integrace s GitOps:** Podpora automatizovaného nasazování s nástroji jako ArgoCD a FluxCD.
 - **Efektivní správa závislostí:** Jednoduchá správa závislostí a připojování externích služeb.
 
-### Struktura Helm Chartu
+### Struktura Helmu
 Každý Helm Chart obsahuje několik základních souborů:  
 ```plaintext
 my-chart/

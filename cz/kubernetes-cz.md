@@ -1,6 +1,6 @@
 # Kubernetes
 
-## Co je kontejner a jak se liší od virtuálního stroje (VM)?
+## Kontejner, virtuálního stroj (VM) a rozdíly mezi nimi
 ### Kontejner
 - Kontejner je balíček obsahující mikroslužbu spolu s jejími závislostmi a konfiguracemi. 
     - Typicky je navržen tak, aby v kontejneru běžel jeden proces.
@@ -18,14 +18,14 @@ Hybridní přístup: WSL (WSL 2 má vlastní kernel, ale využívá kontejnerov�
 
 ---
 
-## Definice Kubernetes
+## Kubernetes
 - Kubernetes je open-source platforma pro orchestraci kontejnerů.
 - Automatizuje procesy nasazování, škálování a správy kontejnerizovaných aplikací.
 - Původně byl Kubernetes navržen společností Google a v současnosti je spravován pod záštitou organizace CNCF (Cloud Native Computing Foundation).
 
 ---
 
-## Definice Kubectl a Kubelet
+## Kubectl a Kubelet
 ### Kubectl
 - Kubectl je nástroj příkazové řádky (CLI) určený pro interakci s Kubernetes clustery.
 - Slouží jako primární rozhraní pro správu a kontrolu zdrojů Kubernetes.
@@ -101,7 +101,7 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 
 ---
 
-## Co je to Namespace (Jmenný prostor)?
+## Namespace (Jmenný prostor)
 - Namespace je jednotka seskupení v rámci Kubernetes clusteru, která slouží k logickému rozdělení prostředí.
     - Například podle aplikace, týmu, typu prostředí (vývojové, testovací, produkční) nebo pro organizaci objektů.
 - Jedná se o logické rozdělení clusteru pro izolaci aplikací (například vývojových, testovacích a produkčních prostředí).
@@ -121,7 +121,7 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 
 ---
 
-## Definice a účel Kubernetes operátorů
+## Kubernetes operátory a jejich funkce
 - **Kubernetes operátor** je speciální druh **aplikačně specifického kontroleru**, který umožňuje **automatizaci správy aplikací a zdrojů** v Kubernetes.  
 - **Hlavní účel** operátorů je zajistit **soulad aktuálního stavu aplikace v clusteru s požadovaným stavem**, který je definován v konfiguraci.  
 - Operátoři **rozšiřují funkcionalitu Kubernetes API** přidáním **vlastních kontrolerů a Custom Resource Definitions (CRD)**.  

@@ -23,7 +23,7 @@ Celý stav infrastruktury a aplikací (**konfigurace, manifesty Kubernetes, Infr
 - **Podporuje konfiguraci napříč prostředími:** Parametrizace a šablonování konfigurací pro opakovatelné nasazení v různých prostředích.
 - **Zjednodušuje správu komplexních aplikací:** Spravuje složité aplikace s více závislostmi jako jeden celek.
 - **Usnadňuje sdílení a spolupráci:** Využití a sdílení hotových Helm Charts z veřejné knihovny.
-- **Integrace s [GitOps](https://github.com/ILXNAH/devops-case-study/blob/main/cz/gitops-cz.md#gitops---definice-a-funkce):** Podpora automatizovaného nasazování s nástroji jako ArgoCD a FluxCD.
+- **Integrace s [GitOps](https://github.com/ILXNAH/devops-case-study/blob/main/cz/gitops-cz.md#gitops---definice-a-funkce):** Podpora automatizovaného nasazování s nástroji jako [ArgoCD](https://github.com/ILXNAH/devops-case-study/blob/main/cz/gitops-cz.md#argocd-a-jeho-role-v-cicd-pipeline) a FluxCD.
 - **Efektivní správa závislostí:** Jednoduchá správa závislostí a připojování externích služeb.
 
 ### Struktura Helmu

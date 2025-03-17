@@ -14,7 +14,8 @@ Celý stav infrastruktury a aplikací (**konfigurace, manifesty Kubernetes, Infr
 ---
 
 ## Helm a jeho využití  
-**Helm** je správce balíčků pro Kubernetes, který zjednodušuje a standardizuje nasazování, správu a aktualizaci aplikací v Kubernetes clusterech. Usnadňuje orchestraci komplexních aplikací a umožňuje jejich deklarativní nasazení.  
+**Helm** je správce balíčků pro Kubernetes, který zjednodušuje a standardizuje nasazování, správu a aktualizaci aplikací v Kubernetes clusterech. Usnadňuje orchestraci komplexních aplikací a umožňuje jejich deklarativní nasazení.
+- Deklarativní přístup: definuje cílový stav bez konkretizace a popisu jednotlivých kroků.
 
 ### Funkce a výhody Helmu
 - **Zjednodušuje nasazení:** Automatizuje nasazení aplikací v Kubernetes pomocí balíčků **Helm Charts**.

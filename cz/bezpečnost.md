@@ -31,7 +31,7 @@ V Kubernetes je klíčové efektivně a bezpečně spravovat konfiguraci aplikac
 - Oddělení konfigurace slouží k jednodušší manipulaci a větší flexibilitě image, redukuje velikost image.  
 - Není určena pro citlivá data (data jsou nešifrovaná).
 
-Best practice v K8s je oddělit ConfigMap od aplikace, což přináší několik klíčových výhod:
+#### Výhody Oddělení ConfigMap od Aplikace (Kubernetes Best Practice)
 - **Flexibilita a správa konfigurace**
     - Neměnný aplikační kód, flexibilní konfigurace – aplikace nemusí být znovu sestavena při změně konfigurace.
     - Podpora více prostředí (dev/test/prod) bez nutnosti měnit image aplikace.

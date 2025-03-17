@@ -72,7 +72,7 @@ V Kubernetes je klíčové efektivně a bezpečně spravovat konfiguraci aplikac
 
 ---
 
-## Disaster Recovery pro Kubernetes cluster
+## Zotavení po havárii (Disaster Recovery) pro Kubernetes cluster
 - Hlavní je zálohování etcd a manifestů aplikací.  
 - Automatizace záloh etcd je možná přímo v K8s vytvořením ConfigMapy pro zálohovací **sh** skript a **CronJobu**, který bude zálohovat např. do AWS S3 nebo NFS.  
 - Manifesty se mohou automaticky zálohovat přes **GitOps** nebo open-source nástroj **Velero** (např. do AWS S3), který má podporu pro plánované zálohy.  

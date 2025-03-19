@@ -141,7 +141,7 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 
 ---
 
-## Typy Service (Služeb) v Kubernetes
+## Typy Služeb (Service) v Kubernetes
 - **ClusterIP:** Zpřístupnění aplikace na interní IP adrese. Vhodné pro interní služby, dostupné pouze uvnitř clusteru.
 - **NodePort:** Kromě ClusterIP přidává možnost externího přístupu přes statický port na IP adrese každé node v clusteru (`IP:static_port`).
 - **LoadBalancer:** Zpřístupnění přes externí Load Balancer s vlastní veřejnou IP adresou. Ideální pro produkční aplikace s vysokým provozem.

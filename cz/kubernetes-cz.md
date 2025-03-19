@@ -202,7 +202,7 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
         ```
 6. **Instalace volitelných nástrojů**:
     - Pro rozšíření funkcionality clusteru nainstalujte volitelné nástroje, jako například:
-        - Monitoring (Prometheus, Grafana)
+        - [Monitoring](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md) ([Prometheus](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md#prometheus), Grafana)
         - Logování (Elasticsearch, Fluentd, Kibana - EFK stack)
         - Ingress kontrolery (nginx-ingress-controller, Traefik)
 7. **Nasazení aplikace**:
@@ -219,8 +219,8 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
     - Nakonfigurujte další aspekty clusteru dle vašich požadavků, například:
         - Bezpečnostní politiky (NetworkPolicies, PodSecurityPolicies)
         - Centralizované logování
-        - Strategie zálohování a obnovy clusteru
-        - Monitoring a alerting
+        - Strategie zálohování a obnovy ([DR](https://github.com/ILXNAH/devops-case-study/blob/main/cz/bezpe%C4%8Dnost.md#zotaven%C3%AD-po-hav%C3%A1rii-disaster-recovery-pro-kubernetes-cluster)) clusteru
+        - [Monitoring](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md) a alerting
 
 ---
 

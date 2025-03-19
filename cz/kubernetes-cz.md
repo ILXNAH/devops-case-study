@@ -211,7 +211,7 @@ Pro instalaci Kubernetes clusteru v on-premise prostředí postupujte podle nás
             ```bash
             kubectl create deployment <název-deploymentu> --image=<jméno-image>
             ```
-        - Vytvořte službu (Service) pro zpřístupnění Deploymentu a exponujte ji na požadovaném portu pomocí `kubectl expose deployment`: 
+        - Vytvořte službu pro zpřístupnění Deploymentu a exponujte ji na požadovaném portu pomocí `kubectl expose deployment`: 
             ```bash
             kubectl expose deployment <název-deploymentu> --port=<port> --target-port=<cílový-port> --type=LoadBalancer (nebo ClusterIP/NodePort)
             ```

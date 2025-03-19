@@ -177,16 +177,16 @@ Pro instalaci Kubernetes clusteru v on-premise prostředí postupujte podle nás
     - Nainstalujte nástroje `kubeadm`, `kubelet` a `kubectl` na všech uzlech.
 - **Inicializace řídícího uzlu (Master Node)**:
     - Na řídícím uzlu inicializujte Kubernetes cluster pomocí příkazu:
-```bash
+    ```bash
     kubeadm init
-```
+    ```
 - **Konfigurace `kubectl`**:
     - Pro konfiguraci nástroje `kubectl` zkopírujte konfigurační soubor administrátora:
-```bash
+    ```bash
     mkdir -p $HOME/.kube
     sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
     sudo chown $(id -u):$(id -g) $HOME/.kube/config
-```
+    ```
 - **Konfigurace síťování (CNI pluginy)**:
     - Nakonfigurujte síťové rozhraní clusteru (CNI). Doporučené řešení zahrnují:
         - Calico
@@ -196,10 +196,10 @@ Pro instalaci Kubernetes clusteru v on-premise prostředí postupujte podle nás
 - **Připojení pracovních uzlů (Worker Nodes)**:
     - Na pracovních uzlech se připojte ke clusteru pomocí příkazu `kubeadm join`. Příkaz `kubeadm join` se vygeneruje po úspěšné inicializaci řídícího uzlu (`kubeadm init`).
     - Po připojení uzlů ověřte funkčnost clusteru pomocí nástroje kubectl z řídícího uzlu:
-```bash
+    ```bash
     kubectl get nodes
     kubectl get pods --all-namespaces
-```
+    ```
 - **Instalace volitelných nástrojů**:
     - Pro rozšíření funkcionality clusteru nainstalujte volitelné nástroje, jako například:
         - Monitoring (Prometheus, Grafana)
@@ -208,16 +208,13 @@ Pro instalaci Kubernetes clusteru v on-premise prostředí postupujte podle nás
 - **Nasazení aplikace**:
     - Pro nasazení aplikace do clusteru:
         - Vytvořte Deployment definici a aplikujte ji pomocí `kubectl create deployment`:
-```bash
+        ```bash
         kubectl create deployment <název-deploymentu> --image=<jméno-image>
-
-```
-
+        ```
         - Vytvořte službu (Service) pro zpřístupnění Deploymentu a exponujte ji na požadovaném portu pomocí `kubectl expose deployment`: 
-```bash
+        ```bash
         kubectl expose deployment <název-deploymentu> --port=<port> --target-port=<cílový-port> --type=LoadBalancer (nebo ClusterIP/NodePort)
-
-```
+        ```
 - **Konfigurace clusteru**:
     - Nakonfigurujte další aspekty clusteru dle vašich požadavků, například:
         - Bezpečnostní politiky (NetworkPolicies, PodSecurityPolicies)

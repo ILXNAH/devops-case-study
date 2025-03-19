@@ -178,7 +178,7 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
 
 2. **Inicializace řídícího uzlu (Master Node)**:
     - Na řídícím uzlu inicializujte Kubernetes cluster pomocí příkazu:
-    
+
         ```bash
         kubeadm init
         ```
@@ -193,7 +193,7 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
         ```
 
 4. **Konfigurace síťování (CNI pluginy)**:
-    - Nakonfigurujte síťové rozhraní clusteru (CNI). Doporučené řešení zahrnují:
+    - Nakonfigurujte síťové rozhraní clusteru. Doporučená řešení zahrnují:
         - Calico
         - Flannel
         - Weave Net

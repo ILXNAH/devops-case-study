@@ -219,7 +219,7 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
     - Nakonfigurujte další aspekty clusteru dle vašich požadavků, například:
         - Bezpečnostní politiky (NetworkPolicies, PodSecurityPolicies)
         - Centralizované logování
-        - Strategie zálohování a obnovy ([DR](https://github.com/ILXNAH/devops-case-study/blob/main/cz/bezpe%C4%8Dnost.md#zotaven%C3%AD-po-hav%C3%A1rii-disaster-recovery-pro-kubernetes-cluster)) clusteru
+        - Strategie zálohování a obnovy ([Disaster Recovery](https://github.com/ILXNAH/devops-case-study/blob/main/cz/bezpe%C4%8Dnost.md#zotaven%C3%AD-po-hav%C3%A1rii-disaster-recovery-pro-kubernetes-cluster)) clusteru
         - [Monitoring](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md) a alerting
 
 ---

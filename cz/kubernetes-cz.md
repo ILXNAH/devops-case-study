@@ -170,11 +170,11 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 ---
 
 ## Instalace clusteru v on-prem prostředí
-Pro instalaci Kubernetes clusteru v on-premise prostředí postupujte podle následujících kroků:
+Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main/cz/kubernetes-cz.md#kubernetes-1) clusteru v on-premise prostředí postupujte podle následujících kroků:
 1. **Přípravné kroky**:
     - Aktualizujte systémové balíčky na všech uzlech clusteru.
     - Nainstalujte container runtime, například Docker nebo containerd.
-    - Nainstalujte nástroje `kubeadm`, `kubelet` a `kubectl` na všech uzlech.
+    - Nainstalujte [nástroje](https://github.com/ILXNAH/devops-case-study/blob/main/cz/kubernetes-cz.md#kubectl-a-kubelet) `kubeadm`, `kubelet` a `kubectl` na všech uzlech.
 2. **Inicializace řídícího uzlu (Master Node)**:
     - Na řídícím uzlu inicializujte Kubernetes cluster pomocí příkazu:
         ```bash

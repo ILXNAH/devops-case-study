@@ -184,6 +184,7 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
 
 3. **Konfigurace `kubectl`**:
     - Pro konfiguraci nástroje `kubectl` zkopírujte konfigurační soubor administrátora:
+    
         ```bash
         mkdir -p $HOME/.kube
         sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -200,6 +201,7 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
 5. **Připojení pracovních uzlů (Worker Nodes)**:
     - Na pracovních uzlech se připojte ke clusteru pomocí příkazu `kubeadm join`. <br> Příkaz `kubeadm join` se vygeneruje po úspěšné inicializaci řídícího uzlu (`kubeadm init`).
     - Po připojení uzlů ověřte funkčnost clusteru pomocí nástroje kubectl z řídícího uzlu:
+
         ```bash
         kubectl get nodes
         kubectl get pods --all-namespaces
@@ -214,10 +216,12 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
 7. **Nasazení aplikace**:
     - Pro nasazení aplikace do clusteru:
         - Vytvořte Deployment definici a aplikujte ji pomocí `kubectl create deployment`:
+
             ```bash
             kubectl create deployment <název-deploymentu> --image=<jméno-image>
             ```
         - Vytvořte službu pro zpřístupnění Deploymentu a exponujte ji na požadovaném portu pomocí `kubectl expose deployment`: 
+
             ```bash
             kubectl expose deployment <název-deploymentu> --port=<port> --target-port=<cílový-port> --type=LoadBalancer (nebo ClusterIP/NodePort)
             ```

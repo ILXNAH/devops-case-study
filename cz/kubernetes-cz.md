@@ -153,7 +153,7 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 - Úložiště, které existuje pouze po dobu životního cyklu podu.
 - Po smazání nebo restartování podu se toto úložiště vymaže.
 - Používá se pro data, u kterých není vyžadováno dlouhodobé uchování, například procesní logy, cache nebo dočasné soubory obsahující tajné klíče či konfigurační data.
-- Obvykle je uloženo v lokálním úložišti příslušné node (například na disku fyzického serveru).
+- Obvykle je uloženo v lokálním úložišti příslušného uzlu (například na disku fyzického serveru).
 - Specifikace se provádí v `Pod spec`
 - Jednotlivé typy `emptyDir`, `configMap`, `downwardAPI` a `secret` jsou spravovány kubeletem na každé node.
 

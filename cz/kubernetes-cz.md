@@ -149,7 +149,7 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 
 ---
 
-## Ephemeral storage (Dočasné úložiště)
+## Dočasné úložiště (Ephemeral storage)
 - Úložiště, které existuje pouze po dobu životního cyklu podu.
 - Po smazání nebo restartování podu se toto úložiště vymaže.
 - Používá se pro data, u kterých není vyžadováno dlouhodobé uchování, například procesní logy, cache nebo dočasné soubory obsahující tajné klíče či konfigurační data.

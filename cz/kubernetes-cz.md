@@ -80,10 +80,10 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 ## Image vs. Kontejner
 - **Image:** 
     - Statická šablona pro vytvoření kontejneru. 
-    - Obsahuje informace, jako je konfigurace, knihovny a aplikace.
+    - Obsahuje informace jako je konfigurace, knihovny a aplikace.
 - **Kontejner:**
     - Běžící instance image, živý proces.
-    - Kontejner lze spustit, zastavit a odstranit, na rozdíl od image.
+    - Kontejner lze spustit, zastavit a odstranit - na rozdíl od image.
 
 ---
 

@@ -175,11 +175,13 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
     - Aktualizujte systémové balíčky na všech uzlech clusteru.
     - Nainstalujte container runtime, například Docker nebo containerd.
     - Nainstalujte [nástroje](https://github.com/ILXNAH/devops-case-study/blob/main/cz/kubernetes-cz.md#kubectl-a-kubelet) `kubeadm`, `kubelet` a `kubectl` na všech uzlech.
+
 2. **Inicializace řídícího uzlu (Master Node)**:
     - Na řídícím uzlu inicializujte Kubernetes cluster pomocí příkazu:
         ```bash
         kubeadm init
         ```
+
 3. **Konfigurace `kubectl`**:
     - Pro konfiguraci nástroje `kubectl` zkopírujte konfigurační soubor administrátora:
         ```bash
@@ -187,12 +189,14 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
         sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
         sudo chown $(id -u):$(id -g) $HOME/.kube/config
         ```
+
 4. **Konfigurace síťování (CNI pluginy)**:
     - Nakonfigurujte síťové rozhraní clusteru (CNI). Doporučené řešení zahrnují:
         - Calico
         - Flannel
         - Weave Net
     - Postup instalace CNI se liší v závislosti na zvoleném řešení.
+
 5. **Připojení pracovních uzlů (Worker Nodes)**:
     - Na pracovních uzlech se připojte ke clusteru pomocí příkazu `kubeadm join`. <br> Příkaz `kubeadm join` se vygeneruje po úspěšné inicializaci řídícího uzlu (`kubeadm init`).
     - Po připojení uzlů ověřte funkčnost clusteru pomocí nástroje kubectl z řídícího uzlu:
@@ -200,11 +204,13 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
         kubectl get nodes
         kubectl get pods --all-namespaces
         ```
+
 6. **Instalace volitelných nástrojů**:
     - Pro rozšíření funkcionality clusteru nainstalujte volitelné nástroje, jako například:
         - [Monitoring](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md) ([Prometheus](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md#prometheus), Grafana)
         - Logování (Elasticsearch, Fluentd, Kibana - EFK stack)
         - Ingress kontrolery (nginx-ingress-controller, Traefik)
+
 7. **Nasazení aplikace**:
     - Pro nasazení aplikace do clusteru:
         - Vytvořte Deployment definici a aplikujte ji pomocí `kubectl create deployment`:
@@ -215,6 +221,7 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
             ```bash
             kubectl expose deployment <název-deploymentu> --port=<port> --target-port=<cílový-port> --type=LoadBalancer (nebo ClusterIP/NodePort)
             ```
+
 8. **Konfigurace clusteru**:
     - Nakonfigurujte další aspekty clusteru dle vašich požadavků, například:
         - Bezpečnostní politiky (NetworkPolicies, PodSecurityPolicies)

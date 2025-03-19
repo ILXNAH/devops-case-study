@@ -7,7 +7,7 @@
 - Obsahuje pouze aplikaci a nezahrnuje celý operační systém.
 - Má menší nároky na systémové zdroje, které jsou sdílené s hostitelským operačním systémem.
 - Je charakteristický rychlostí a dobrou škálovatelností, díky čemuž je hojně využíván v mikroservisních architekturách (například v telekomunikacích nebo bankovnictví).
-- Osobní zkušenost: <br> Docker a OpenShift (aplikační podpora + automatizace), méně Kubernetes (OpenShift je platforma postavená na Kubernetes).
+- Osobní zkušenost: <br> Docker a OpenShift (aplikační podpora + automatizace), méně Kubernetes (OpenShift = platforma postavená na Kubernetes).
 
 ### Virtuální stroj (VM)
 - Má vlastní OS = vlastní přidělené zdroje (CPU, RAM, disk, síť přidělené hypervizorem).

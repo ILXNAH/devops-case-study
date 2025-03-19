@@ -133,7 +133,7 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
   - **Správu zálohování a obnovy aplikací** (např. databázových instancí).
   - **Přidání specifických API a zajištění konzistence** aplikací běžících v clusteru.
 
-### Příklady Kubernetes operátorů
+### Příklady operátorů
 - **Prometheus Operator** – správa [monitoringu](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md) a metrik.
 - **Cert-Manager Operator** – automatizace správy [TLS](https://github.com/ILXNAH/devops-case-study/blob/main/cz/bezpe%C4%8Dnost.md#definice-a-mechanismus-ssltls) certifikátů.
 - **Istio Operator** – správa [Service Mesh](https://github.com/ILXNAH/devops-case-study/blob/main/cz/bezpe%C4%8Dnost.md#service-mesh-s%C3%AD%C5%A5-slu%C5%BEeb) řešení.
@@ -141,7 +141,7 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 
 ---
 
-## Typy Služeb (Service) v Kubernetes
+## Typy Služeb (Service)
 - **ClusterIP:** Zpřístupnění aplikace na interní IP adrese. Vhodné pro interní služby, dostupné pouze uvnitř clusteru.
 - **NodePort:** Kromě ClusterIP přidává možnost externího přístupu přes statický port na IP adrese každé node v clusteru (`IP:static_port`).
 - **LoadBalancer:** Zpřístupnění přes externí Load Balancer s vlastní veřejnou IP adresou. Ideální pro produkční aplikace s vysokým provozem.
@@ -169,7 +169,7 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 
 ---
 
-## Instalace Kubernetes clusteru v on-prem prostředí
+## Instalace clusteru v on-prem prostředí
 Pro instalaci Kubernetes clusteru v on-premise prostředí postupujte podle následujících kroků:
 1. **Přípravné kroky**:
     - Aktualizujte systémové balíčky na všech uzlech clusteru.
@@ -224,7 +224,7 @@ Pro instalaci Kubernetes clusteru v on-premise prostředí postupujte podle nás
 
 ---
 
-## Upgrade Kubernetes clusteru v on-prem prostředí
+## Upgrade clusteru v on-prem prostředí
 - Záloha etcd a aplikačních dat.
 - Postupná aktualizace kubeadm, kubelet a kubectl.
 - Restart kubelet na všech nodech.

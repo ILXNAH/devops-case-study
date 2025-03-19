@@ -178,13 +178,14 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
 
 2. **Inicializace řídícího uzlu (Master Node)**:
     - Na řídícím uzlu inicializujte Kubernetes cluster pomocí příkazu:
+    
         ```bash
         kubeadm init
         ```
 
 3. **Konfigurace `kubectl`**:
     - Pro konfiguraci nástroje `kubectl` zkopírujte konfigurační soubor administrátora:
-    
+
         ```bash
         mkdir -p $HOME/.kube
         sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config

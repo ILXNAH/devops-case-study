@@ -101,7 +101,7 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 
 ---
 
-## Namespace (Jmenný prostor)
+## Jmenný prostor (Namespace)
 - Namespace je jednotka seskupení v rámci Kubernetes clusteru, která slouží k logickému rozdělení prostředí.
     - Například podle aplikace, týmu, typu prostředí (vývojové, testovací, produkční) nebo pro organizaci objektů.
 - Jedná se o logické rozdělení clusteru pro izolaci aplikací (například vývojových, testovacích a produkčních prostředí).

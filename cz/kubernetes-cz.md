@@ -200,7 +200,7 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
     - Postup instalace CNI se liší v závislosti na zvoleném řešení.
 
 5. **Připojení pracovních uzlů (Worker Nodes)**:
-    - Na pracovních uzlech se připojte ke clusteru pomocí příkazu `kubeadm join`. <br> Příkaz `kubeadm join` se generuje po úspěšné inicializaci řídícího uzlu (`kubeadm init`) v unikátním formátu: adresa řídícího uzlu + token pro autorizaci + hash CA certifikátu.
+    - Na pracovních uzlech se připojte ke clusteru pomocí příkazu `kubeadm join`. <br> Příkaz `kubeadm join` se generuje po úspěšné inicializaci řídícího uzlu (`kubeadm init`) v unikátním formátu: <br> adresa řídícího uzlu + token pro autorizaci + hash CA certifikátu.
     - Po připojení uzlů ověřte funkčnost clusteru pomocí nástroje kubectl z řídícího uzlu:
 
         ```bash

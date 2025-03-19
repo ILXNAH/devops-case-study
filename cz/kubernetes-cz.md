@@ -192,7 +192,7 @@ Pro instalaci Kubernetes clusteru v on-premise prostředí postupujte podle nás
         - Calico
         - Flannel
         - Weave Net
-    - Postup instalace CNI se liší v závislosti na zvoleném řešení. Prostudujte si dokumentaci vybraného CNI providera.
+    - Postup instalace CNI se liší v závislosti na zvoleném řešení.
 - **Připojení pracovních uzlů (Worker Nodes)**:
     - Na pracovních uzlech se připojte k clusteru pomocí příkazu `kubeadm join`. Příkaz `kubeadm join` se vygeneruje po úspěšné inicializaci řídícího uzlu (`kubeadm init`).
     - Po připojení uzlů ověřte funkčnost clusteru pomocí nástroje kubectl z řídícího uzlu:

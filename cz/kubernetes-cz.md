@@ -165,7 +165,7 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
     - Selekce objektů na základě label je užitečná pro operace, jako je nasazování, aktualizace nebo škálování aplikací.
 - **Anotace:**
     - Anotace slouží k ukládání podrobných metadat, například časových razítek, verzí nebo odkazů na externí zdroje.
-    - Anotace poskytují rozšířený kontextuální informace o objektu, ale nemají vliv na selekci objektů (podů, služeb, jmenných prostorů, Secretů, ConfigMap apod.).
+    - Anotace poskytují rozšířené kontextuální informace o objektu, ale nemají vliv na selekci objektů (podů, služeb, jmenných prostorů, Secretů, ConfigMap apod.).
 
 ---
 

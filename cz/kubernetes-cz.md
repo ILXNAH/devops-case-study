@@ -171,41 +171,41 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 
 ## Instalace Kubernetes clusteru v on-prem prostředí
 Pro instalaci Kubernetes clusteru v on-premise prostředí postupujte podle následujících kroků:
-- **Přípravné kroky**:
+1. **Přípravné kroky**:
     - Aktualizujte systémové balíčky na všech uzlech clusteru.
     - Nainstalujte container runtime, například Docker nebo containerd.
     - Nainstalujte nástroje `kubeadm`, `kubelet` a `kubectl` na všech uzlech.
-- **Inicializace řídícího uzlu (Master Node)**:
+2. **Inicializace řídícího uzlu (Master Node)**:
     - Na řídícím uzlu inicializujte Kubernetes cluster pomocí příkazu:
         ```bash
         kubeadm init
         ```
-- **Konfigurace `kubectl`**:
+3. **Konfigurace `kubectl`**:
     - Pro konfiguraci nástroje `kubectl` zkopírujte konfigurační soubor administrátora:
         ```bash
         mkdir -p $HOME/.kube
         sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
         sudo chown $(id -u):$(id -g) $HOME/.kube/config
         ```
-- **Konfigurace síťování (CNI pluginy)**:
+4. **Konfigurace síťování (CNI pluginy)**:
     - Nakonfigurujte síťové rozhraní clusteru (CNI). Doporučené řešení zahrnují:
         - Calico
         - Flannel
         - Weave Net
     - Postup instalace CNI se liší v závislosti na zvoleném řešení.
-- **Připojení pracovních uzlů (Worker Nodes)**:
+5. **Připojení pracovních uzlů (Worker Nodes)**:
     - Na pracovních uzlech se připojte ke clusteru pomocí příkazu `kubeadm join`. <br> Příkaz `kubeadm join` se vygeneruje po úspěšné inicializaci řídícího uzlu (`kubeadm init`).
     - Po připojení uzlů ověřte funkčnost clusteru pomocí nástroje kubectl z řídícího uzlu:
         ```bash
         kubectl get nodes
         kubectl get pods --all-namespaces
         ```
-- **Instalace volitelných nástrojů**:
+6. **Instalace volitelných nástrojů**:
     - Pro rozšíření funkcionality clusteru nainstalujte volitelné nástroje, jako například:
         - Monitoring (Prometheus, Grafana)
         - Logování (Elasticsearch, Fluentd, Kibana - EFK stack)
         - Ingress kontrolery (nginx-ingress-controller, Traefik)
-- **Nasazení aplikace**:
+7. **Nasazení aplikace**:
     - Pro nasazení aplikace do clusteru:
         - Vytvořte Deployment definici a aplikujte ji pomocí `kubectl create deployment`:
             ```bash
@@ -215,7 +215,7 @@ Pro instalaci Kubernetes clusteru v on-premise prostředí postupujte podle nás
             ```bash
             kubectl expose deployment <název-deploymentu> --port=<port> --target-port=<cílový-port> --type=LoadBalancer (nebo ClusterIP/NodePort)
             ```
-- **Konfigurace clusteru**:
+8. **Konfigurace clusteru**:
     - Nakonfigurujte další aspekty clusteru dle vašich požadavků, například:
         - Bezpečnostní politiky (NetworkPolicies, PodSecurityPolicies)
         - Centralizované logování

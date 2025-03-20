@@ -267,7 +267,7 @@ Na každém řídícím uzlu postupně upgradujte nástroj `kubeadm` na cílovou
 Následně na stejném řídícím uzlu upgradujte balíčky `kubelet` a `kubectl`.
 - **Restartujte `kubelet`:** <br>
 Po upgradu restartujte službu `kubelet` na řídícím uzlu.
-- **Postupujte postupně:** <br>
+- **Kroky provádějte postupně:** <br>
 Opakujte tyto kroky pro všechny řídící uzly clusteru, ideálně po jednom, abyste zajistili kontinuitu řízení clusteru.
 
 ### 4. **Upgrade pracovních uzlů (Worker Nodes):**
@@ -287,7 +287,7 @@ Po upgradu vraťte uzel zpět do clusteru:
     ```bash
     kubectl uncordon <název-uzlu>
     ```
-- **Postupujte postupně:** <br>
+- **Kroky provádějte postupně:** <br>
 Opakujte tyto kroky pro všechny pracovní uzly clusteru.
 
 ### 5. **Ověření funkčnosti po upgradu:**

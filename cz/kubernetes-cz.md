@@ -7,16 +7,15 @@
 4. [Image vs. Kontejner](#image-vs-kontejner)
 5. [Pod vs. Kontejner](#pod-vs-kontejner)
 6. [Jmenný prostor (Namespace)](#jmenný-prostor-namespace)
-7. [Kubectl a Kubelet](#kubectl-a-kubelet)
-8. [Součásti řídicí roviny Kubernetes (Control Plane)](#součásti-řídicí-roviny-kubernetes-control-plane)
-9. [Role etcd v Kubernetes](#role-etcd-v-kubernetes)
-10. [Custom Resource Definitions (CRD)](#custom-resource-definitions-crd)
-11. [Kubernetes operátory a jejich funkce](#kubernetes-operátory-a-jejich-funkce)
-12. [Typy Služeb (Service)](#typy-služeb-service)
-13. [Dočasné úložiště (Ephemeral storage)](#dočasné-úložiště-ephemeral-storage)
-14. [Anotace vs. Labely](#anotace-vs-labely)
-15. [Instalace clusteru v on-prem prostředí](#instalace-clusteru-v-on-prem-prostředí)
-16. [Upgrade clusteru v on-prem prostředí](#upgrade-clusteru-v-on-prem-prostředí)
+7. [Dočasné úložiště (Ephemeral storage)](#dočasné-úložiště-ephemeral-storage)
+8. [Anotace vs. Labely](#anotace-vs-labely)
+9. [Kubectl a Kubelet](#kubectl-a-kubelet)
+10. [Součásti řídicí roviny Kubernetes (Control Plane)](#součásti-řídicí-roviny-kubernetes-control-plane)
+11. [Custom Resource Definitions (CRD)](#custom-resource-definitions-crd)
+12. [Kubernetes operátory a jejich funkce](#kubernetes-operátory-a-jejich-funkce)
+13. [Typy Služeb (Service)](#typy-služeb-service) 
+14. [Instalace clusteru v on-prem prostředí](#instalace-clusteru-v-on-prem-prostředí)
+15. [Upgrade clusteru v on-prem prostředí](#upgrade-clusteru-v-on-prem-prostředí)
 
 ## Kontejner, virtuální stroj (VM) a rozdíly mezi nimi
 ### Kontejner
@@ -81,6 +80,26 @@ Seskupení kontejnerů v podu je výhodné pro:
 
 ---
 
+## Dočasné úložiště (Ephemeral storage)
+- Úložiště, které existuje pouze po dobu životního cyklu podu.
+- Po smazání nebo restartování podu se toto úložiště vymaže.
+- Používá se pro data, u kterých není vyžadováno dlouhodobé uchování, například procesní logy, cache nebo dočasné soubory obsahující tajné klíče či konfigurační data.
+- Obvykle je uloženo v lokálním úložišti příslušného uzlu (například na disku fyzického serveru).
+- Specifikace se provádí v `Pod spec`.
+- Jednotlivé typy `emptyDir`, `configMap`, `downwardAPI` a `secret` jsou spravovány kubeletem na každém uzlu.
+
+---
+
+## Anotace vs. Labely
+- **Labely:**
+    - Labely se používají k identifikaci a organizaci objektů v Kubernetes (zejména pro účely výběru a filtrování).
+    - Selekce objektů na základě labelů je užitečná pro operace jako je nasazování, aktualizace nebo škálování aplikací.
+- **Anotace:**
+    - Anotace slouží k ukládání podrobných metadat, například časových razítek, verzí nebo odkazů na externí zdroje.
+    - Anotace poskytují rozšířené kontextuální informace o objektu, ale nemají vliv na selekci objektů (podů, služeb, jmenných prostorů, Secretů, ConfigMap apod.).
+
+---
+
 ## Kubectl a Kubelet
 ### Kubectl
 - Kubectl je nástroj příkazové řádky (CLI) určený pro interakci s Kubernetes clustery.
@@ -108,29 +127,26 @@ Seskupení kontejnerů v podu je výhodné pro:
 - Zajišťuje konzistentní a dostupný stav clusteru.
 - Je to kriticky důležitá komponenta pro obnovu a celkovou správu clusteru.
 
-### kube-scheduler
-- Komponenta zodpovědná za rozhodování o umístění podů na konkrétní nody.
-- Vyhodnocuje výběr nejvhodnější uzel (node) na základě dostupných zdrojů, definovaných politik a pravidel.
-
-### kube-controller-manager
-- Spravuje kontrolery, které implementují řídicí logiku chování Kubernetes API. Mezi typické funkce patří například:
-
-    - Správa počtu replik podů.
-    - Nasazování aplikací, verzování a škálování.
-    - Správa, monitorování, kontrola a aktualizace stavu nodů, zajištění dostupnosti podů (včetně migrace při selhání nodu).
-
-### cloud-controller-manager
-- Slouží k zajištění integrace Kubernetes s cloudovými poskytovateli (CSP) – volitelná komponenta.
-- Spravuje cloudové zdroje, jako jsou load balancery, disky a síťové adresy.
-
----
-
-## Role etcd v Kubernetes
+#### Role `etcd` v Kubernetes
 etcd je distribuovaná databáze, která se v Kubernetes používá k ukládání stavu clusteru a jeho konfigurace.
 - Při vytvoření nového podu nebo jiného objektu v Kubernetes API server zapíše tuto změnu do etcd.
 - Řadiče (Controllers) a plánovač (Scheduler) čtou informace z etcd (prostřednictvím API serveru) a na základě těchto informací provádějí příslušné akce (například správa replik a Secretů, monitorování nodů, přiřazování podů k nodům, vyvažování zátěže mezi nody).
 - etcd běží jako cluster s více uzly, kde jeden uzel funguje jako leader a ostatní jako followeři, kteří synchronizují data. 
     - Je nezbytné zajistit vysokou dostupnost (HA) a prevenci selhání jednoho bodu (SPoF), protože API server je závislý na etcd a bez něj by nemohl provádět žádné změny v clusteru – například škálování, nasazování nebo aktualizace.
+
+### kube-scheduler
+- Komponenta zodpovědná za rozhodování o umístění podů na konkrétní nody.
+- Vyhodnocuje výběr nejvhodnější uzel (node) na základě dostupných zdrojů, definovaných politik a pravidel.
+
+### kube-controller-manager
+Spravuje kontrolery, které implementují řídicí logiku chování Kubernetes API. Mezi typické funkce patří například:
+- Správa počtu replik podů.
+- Nasazování aplikací, verzování a škálování.
+- Správa, monitorování, kontrola a aktualizace stavu nodů, zajištění dostupnosti podů (včetně migrace při selhání nodu).
+
+### cloud-controller-manager
+- Slouží k zajištění integrace Kubernetes s cloudovými poskytovateli (CSP) – volitelná komponenta.
+- Spravuje cloudové zdroje, jako jsou load balancery, disky a síťové adresy.
 
 ---
 
@@ -166,26 +182,6 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 - **NodePort:** Kromě ClusterIP přidává možnost externího přístupu přes statický port na IP adrese každém uzlu v clusteru (`IP:static_port`).
 - **LoadBalancer:** Zpřístupnění přes externí Load Balancer s vlastní veřejnou IP adresou. Ideální pro produkční aplikace s vysokým provozem.
 - **ExternalName:** Překlad na externí DNS název bez proxy nebo load balancingu. Používá se pro připojení ke službám mimo Kubernetes cluster (například externí služby nebo služby hostované jinde). Provoz je směrován přímo na externí hostname prostřednictvím CNAME záznamu poskytovaného DNS serverem Kubernetes.
-
----
-
-## Dočasné úložiště (Ephemeral storage)
-- Úložiště, které existuje pouze po dobu životního cyklu podu.
-- Po smazání nebo restartování podu se toto úložiště vymaže.
-- Používá se pro data, u kterých není vyžadováno dlouhodobé uchování, například procesní logy, cache nebo dočasné soubory obsahující tajné klíče či konfigurační data.
-- Obvykle je uloženo v lokálním úložišti příslušného uzlu (například na disku fyzického serveru).
-- Specifikace se provádí v `Pod spec`.
-- Jednotlivé typy `emptyDir`, `configMap`, `downwardAPI` a `secret` jsou spravovány kubeletem na každém uzlu.
-
----
-
-## Anotace vs. Labely
-- **Labely:**
-    - Labely se používají k identifikaci a organizaci objektů v Kubernetes (zejména pro účely výběru a filtrování).
-    - Selekce objektů na základě labelů je užitečná pro operace jako je nasazování, aktualizace nebo škálování aplikací.
-- **Anotace:**
-    - Anotace slouží k ukládání podrobných metadat, například časových razítek, verzí nebo odkazů na externí zdroje.
-    - Anotace poskytují rozšířené kontextuální informace o objektu, ale nemají vliv na selekci objektů (podů, služeb, jmenných prostorů, Secretů, ConfigMap apod.).
 
 ---
 

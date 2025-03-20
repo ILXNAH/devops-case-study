@@ -19,8 +19,8 @@
 
 ## Kontejner, virtuální stroj (VM) a rozdíly mezi nimi
 ### Kontejner
-- Kontejner je balíček obsahující mikroslužbu spolu s jejími závislostmi a konfiguracemi. 
-    - Typicky je navržen tak, aby v kontejneru běžel jeden proces.
+Kontejner je balíček obsahující mikroslužbu spolu s jejími závislostmi a konfiguracemi. 
+- Typicky je navržen tak, aby v kontejneru běžel jeden proces.
 - Obsahuje pouze aplikaci a nezahrnuje celý operační systém.
 - Má menší nároky na systémové zdroje, které jsou sdílené s hostitelským operačním systémem.
 - Je charakteristický rychlostí a dobrou škálovatelností, díky čemuž je hojně využíván v mikroservisních architekturách (například v telekomunikacích nebo bankovnictví).

@@ -25,6 +25,44 @@ Hybridní přístup: WSL (WSL 2 má vlastní kernel, ale využívá kontejnerov�
 
 ---
 
+## Základní objekty v Kubernetes
+- Pod, Deployment, ReplicaSet, StatefulSet, DaemonSet, PersistentVolume, Service, Namespace, ConfigMap, Secret, Job ...
+
+---
+
+## Image vs. Kontejner
+- **Image:** 
+    - Statická šablona pro vytvoření kontejneru. 
+    - Obsahuje informace jako je konfigurace, knihovny a aplikace.
+- **Kontejner:**
+    - Běžící instance image, živý proces.
+    - Kontejner lze spustit, zastavit a odstranit - na rozdíl od image.
+
+---
+
+## Pod vs. Kontejner
+### **Pod** je nejmenší nasaditelná jednotka v systému Kubernetes.
+- **Pod** může obsahovat jeden či více kontejnerů.
+- **Pod** je spravován komponentou kubelet, což je agent běžící na každém nodu (uzlu) v clusteru.
+
+### **Kontejner** je běžící instance image, která je součástí podu.
+Seskupení kontejnerů v podu je výhodné pro:
+- Logické uspořádání a sdílení zdrojů (například IP adresy a úložiště).
+- Konfiguraci systému orchestrace (například pro účely nasazování aplikací).
+- Zajištění centralizovaného logování.
+- Implementaci zabezpečení (například maskování IP adres pomocí proxy serveru).
+- Potřeby formátování dat a podobné účely.
+
+---
+
+## Jmenný prostor (Namespace)
+- Namespace je jednotka seskupení v rámci Kubernetes clusteru, která slouží k logickému rozdělení prostředí.
+    - Například podle aplikace, týmu, typu prostředí (vývojové, testovací, produkční) nebo pro organizaci objektů.
+- Jedná se o logické rozdělení clusteru pro izolaci aplikací (například vývojových, testovacích a produkčních prostředí).
+- Namespace může obsahovat vlastní prostředky, jako jsou Pody, Služby, ConfigMapy a další objekty (například ReplicaSet, Secret, Ingress a další).
+
+---
+
 ## Kubectl a Kubelet
 ### Kubectl
 - Kubectl je nástroj příkazové řádky (CLI) určený pro interakci s Kubernetes clustery.
@@ -74,43 +112,6 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 - Řadiče (Controllers) a plánovač (Scheduler) čtou informace z etcd (prostřednictvím API serveru) a na základě těchto informací provádějí příslušné akce (například správa replik a Secretů, monitorování nodů, přiřazování podů k nodům, vyvažování zátěže mezi nody).
 - etcd běží jako cluster s více uzly, kde jeden uzel funguje jako leader a ostatní jako followeři, kteří synchronizují data. 
     - Je nezbytné zajistit vysokou dostupnost (HA) a prevenci selhání jednoho bodu (SPoF), protože API server je závislý na etcd a bez něj by nemohl provádět žádné změny v clusteru – například škálování, nasazování nebo aktualizace.
-
----
-
-## Image vs. Kontejner
-- **Image:** 
-    - Statická šablona pro vytvoření kontejneru. 
-    - Obsahuje informace jako je konfigurace, knihovny a aplikace.
-- **Kontejner:**
-    - Běžící instance image, živý proces.
-    - Kontejner lze spustit, zastavit a odstranit - na rozdíl od image.
-
----
-
-## Pod vs. Kontejner
-- **Pod** je nejmenší nasaditelná jednotka v systému Kubernetes.
-    - **Pod** může obsahovat jeden či více kontejnerů.
-    - **Pod** je spravován komponentou kubelet, což je agent běžící na každém nodu (uzlu) v clusteru.
-- **Kontejner** je běžící instance image, která je součástí podu.
-- Seskupení kontejnerů v podu je výhodné pro:
-    - Logické uspořádání a sdílení zdrojů (například IP adresy a úložiště).
-    - Konfiguraci systému orchestrace (například pro účely nasazování aplikací).
-    - Zajištění centralizovaného logování.
-    - Implementaci zabezpečení (například maskování IP adres pomocí proxy serveru).
-    - Potřeby formátování dat a podobné účely.
-
----
-
-## Jmenný prostor (Namespace)
-- Namespace je jednotka seskupení v rámci Kubernetes clusteru, která slouží k logickému rozdělení prostředí.
-    - Například podle aplikace, týmu, typu prostředí (vývojové, testovací, produkční) nebo pro organizaci objektů.
-- Jedná se o logické rozdělení clusteru pro izolaci aplikací (například vývojových, testovacích a produkčních prostředí).
-- Namespace může obsahovat vlastní prostředky, jako jsou Pody, Služby, ConfigMapy a další objekty (například ReplicaSet, Secret, Ingress a další).
-
----
-
-## Základní objekty v Kubernetes
-- Pod, Deployment, ReplicaSet, StatefulSet, DaemonSet, PersistentVolume, Service, Namespace, ConfigMap, Secret, Job ...
 
 ---
 

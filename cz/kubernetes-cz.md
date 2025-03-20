@@ -260,37 +260,37 @@ Pro snadnější obnovu klíčových aplikací exportujte jejich manifesty:
     kubectl get all -A -o yaml > cluster-backup.yaml
     ```
 
-3. **Upgrade řídících uzlů (Master Nodes):**
-    - **Upgradujte `kubeadm`:**
-      - Na každém řídícím uzlu postupně upgradujte nástroj `kubeadm` na cílovou verzi.
-    - **Upgradujte `kubelet` a `kubectl`:**
-      - Následně na stejném řídícím uzlu upgradujte balíčky `kubelet` a `kubectl`.
-    - **Restartujte `kubelet`:**
-      - Po upgradu restartujte službu `kubelet` na řídícím uzlu.
-    - **Postupujte postupně:**
-      - Opakujte tyto kroky pro všechny řídící uzly clusteru, ideálně po jednom, abyste zajistili kontinuitu řízení clusteru.
+### 3. **Upgrade řídících uzlů (Master Nodes):**
+- **Upgradujte `kubeadm`:** <br>
+Na každém řídícím uzlu postupně upgradujte nástroj `kubeadm` na cílovou verzi.
+- **Upgradujte `kubelet` a `kubectl`:** <br>
+Následně na stejném řídícím uzlu upgradujte balíčky `kubelet` a `kubectl`.
+- **Restartujte `kubelet`:** <br>
+Po upgradu restartujte službu `kubelet` na řídícím uzlu.
+- **Postupujte postupně:** <br>
+Opakujte tyto kroky pro všechny řídící uzly clusteru, ideálně po jednom, abyste zajistili kontinuitu řízení clusteru.
 
-4. **Upgrade pracovních uzlů (Worker Nodes):**
-    - **Odstraňte uzel z provozu (Drain):** 
-      - Před upgradem pracovního uzlu doporučuje se ho bezpečně odstranit z provozu, aby se na něj nepřesouvaly nové pody a stávající se mohly korektně ukončit nebo přesunout:
-        
-        ```bash
-        kubectl drain <název-uzlu> --ignore-daemonsets --delete-local-data
-        ```
-    - **Upgradujte `kubeadm`, `kubelet` a `kubectl`:**
-      - Na odpojeném pracovním uzlu upgradujte `kubeadm`, `kubelet` a `kubectl` na cílovou verzi, podobně jako u řídících uzlů.
-    - **Restartujte `kubelet`:** 
-      - Restartujte službu `kubelet` na pracovním uzlu.
-    - **Vraťte uzel do clusteru (Uncordon):** 
-      - Po upgradu vraťte uzel zpět do clusteru:
-        
-        ```bash
-        kubectl uncordon <název-uzlu>
-        ```
-    - **Postupujte postupně:** 
-      - Opakujte tyto kroky pro všechny pracovní uzly clusteru.
+### 4. **Upgrade pracovních uzlů (Worker Nodes):**
+- **Odstraňte uzel z provozu (Drain):** <br>
+Před upgradem pracovního uzlu doporučuje se ho bezpečně odstranit z provozu, aby se na něj nepřesouvaly nové pody a stávající se mohly korektně ukončit nebo přesunout:
+    
+    ```bash
+    kubectl drain <název-uzlu> --ignore-daemonsets --delete-local-data
+    ```
+- **Upgradujte `kubeadm`, `kubelet` a `kubectl`:** <br>
+Na odpojeném pracovním uzlu upgradujte `kubeadm`, `kubelet` a `kubectl` na cílovou verzi, podobně jako u řídících uzlů.
+- **Restartujte `kubelet`:** <br>
+Restartujte službu `kubelet` na pracovním uzlu.
+- **Vraťte uzel do clusteru (Uncordon):** <br>
+Po upgradu vraťte uzel zpět do clusteru:
 
-5. **Ověření funkčnosti po upgradu:**
+    ```bash
+    kubectl uncordon <název-uzlu>
+    ```
+- **Postupujte postupně:** <br>
+Opakujte tyto kroky pro všechny pracovní uzly clusteru.
+
+### 5. **Ověření funkčnosti po upgradu:**
     - **Zkontrolujte stav uzlů a podů:** 
       - Ujistěte se, že všechny uzly jsou ve stavu `Ready` a všechny kritické pody (včetně systémových podů) jsou ve stavu `Running`:
         
@@ -301,7 +301,7 @@ Pro snadnější obnovu klíčových aplikací exportujte jejich manifesty:
     - **Prohlédněte logy:** 
       - Zkontrolujte logy klíčových komponent Kubernetes (apiserver, scheduler, kube-controller-manager) a logy vašich aplikací pro případné chyby nebo varování.
 
-6. **Upgrade ostatních komponent a nástrojů:**
+### 6. **Upgrade ostatních komponent a nástrojů:**
     - **CNI plugin:** 
       - Upgradujte CNI plugin (např. Calico, Flannel) podle dokumentace daného pluginu, aby byl kompatibilní s novou verzí Kubernetes.
     - **Ingress kontrolery:** 

@@ -208,18 +208,18 @@ adresa řídícího uzlu + token pro autorizaci + hash CA certifikátu.
 
 ### 6. **Instalace volitelných nástrojů**: <br> 
 Pro rozšíření funkcionality clusteru nainstalujte volitelné nástroje, jako například:
-    - [Monitoring](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md) ([Prometheus](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md#prometheus), Grafana)
-    - Logování (Elasticsearch, Fluentd, Kibana - EFK stack)
-    - Ingress kontrolery (nginx-ingress-controller, Traefik)
+- [Monitoring](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md) ([Prometheus](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md#prometheus), Grafana)
+- Logování (Elasticsearch, Fluentd, Kibana - EFK stack)
+- Ingress kontrolery (nginx-ingress-controller, Traefik)
 
 ### 7. **Nasazení aplikace**: <br> 
 Pro nasazení aplikace do clusteru:
-    - Vytvořte Deployment definici a aplikujte ji pomocí `kubectl create deployment`:
+- Vytvořte Deployment definici a aplikujte ji pomocí `kubectl create deployment`:
 
     ```bash
     kubectl create deployment <název-deploymentu> --image=<jméno-image>
     ```
-    - Vytvořte službu pro zpřístupnění Deploymentu a exponujte ji na požadovaném portu pomocí `kubectl expose deployment`: 
+- Vytvořte službu pro zpřístupnění Deploymentu a exponujte ji na požadovaném portu pomocí `kubectl expose deployment`: 
 
     ```bash
     kubectl expose deployment <název-deploymentu> --port=<port> --target-port=<cílový-port> --type=LoadBalancer (nebo ClusterIP/NodePort)

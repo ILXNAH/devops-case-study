@@ -184,7 +184,7 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
         ```
 
 3. **Konfigurace `kubectl`**:
-    - Pro konfiguraci nástroje `kubectl` zkopírujte konfigurační soubor administrátora:
+    - Pro konfiguraci nástroje `kubectl` zkopírujte konfigurační soubor administrátora a nastavte správná oprávnění:
 
         ```bash
         mkdir -p $HOME/.kube

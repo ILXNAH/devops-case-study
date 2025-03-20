@@ -66,7 +66,7 @@ je nejmenší nasaditelná jednotka v systému Kubernetes.
 - **Pod** je spravován komponentou kubelet, což je agent běžící na každém nodu (uzlu) v clusteru.
 
 ### Kontejner
-je běžící instance image, která je součástí podu.
+je běžící instance image, která je součástí podu. <br> 
 Seskupení kontejnerů v podu je výhodné pro:
 - Logické uspořádání a sdílení zdrojů (například IP adresy a úložiště).
 - Konfiguraci systému orchestrace (například pro účely nasazování aplikací).

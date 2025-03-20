@@ -242,7 +242,7 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
 Pro upgrade [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main/cz/kubernetes-cz.md#kubernetes-1) clusteru v on-premise prostředí postupujte podle následujících kroků:
 ### 1. **Ověření aktuální verze a kompatibility:** <br>
 Zjistěte aktuálně nainstalovanou verzi Kubernetes clusteru pomocí příkazu:
-    
+
     ```bash
     kubectl version
     ```

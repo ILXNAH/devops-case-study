@@ -327,4 +327,5 @@ Upgradujte systémy pro monitoring (Prometheus, Grafana) a logování (EFK stack
 - **Další nástroje a operátory:** <br>
 Upgradujte všechny další nástroje, operátory a Custom Resource Definitions (CRDs), které používáte v clusteru, a ujistěte se o jejich kompatibilitě s novou verzí Kubernetes.
 
-**Pozn.:** Upgrade clusteru je *komplexní proces*. Vždy si pečlivě prostudujte oficiální dokumentaci pro danou verzi a důkladně **otestujte upgrade v testovacím prostředí** před provedením upgradu v produkci.
+**Pozn.:** <br> 
+Upgrade clusteru je *komplexní proces*. Před provedením upgradu v produkci si prostudujte oficiální dokumentaci pro danou verzi a důkladně **otestujte upgrade v testovacím prostředí**.

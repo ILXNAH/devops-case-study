@@ -48,21 +48,23 @@ Hybridní přístup: WSL (WSL 2 má vlastní kernel, ale využívá kontejnerov�
 ---
 
 ## Image vs. Kontejner
-- **Image:** 
-    - Statická šablona pro vytvoření kontejneru. 
-    - Obsahuje informace jako je konfigurace, knihovny a aplikace.
-- **Kontejner:**
-    - Běžící instance image, živý proces.
-    - Kontejner lze spustit, zastavit a odstranit - na rozdíl od image.
+### Image
+- Statická šablona pro vytvoření kontejneru. 
+- Obsahuje informace jako je konfigurace, knihovny a aplikace.
+### Kontejner
+- Běžící instance image, živý proces.
+- Kontejner lze spustit, zastavit a odstranit - na rozdíl od image.
 
 ---
 
 ## Pod vs. Kontejner
-### **Pod** je nejmenší nasaditelná jednotka v systému Kubernetes.
+### Pod
+je nejmenší nasaditelná jednotka v systému Kubernetes.
 - **Pod** může obsahovat jeden či více kontejnerů.
 - **Pod** je spravován komponentou kubelet, což je agent běžící na každém nodu (uzlu) v clusteru.
 
-### **Kontejner** je běžící instance image, která je součástí podu.
+### Kontejner
+je běžící instance image, která je součástí podu.
 Seskupení kontejnerů v podu je výhodné pro:
 - Logické uspořádání a sdílení zdrojů (například IP adresy a úložiště).
 - Konfiguraci systému orchestrace (například pro účely nasazování aplikací).

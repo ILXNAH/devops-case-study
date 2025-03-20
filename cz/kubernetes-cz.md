@@ -54,7 +54,7 @@ Hybridní přístup: WSL (WSL 2 má vlastní kernel, ale využívá kontejnerov�
 
 ### kube-scheduler
 - Komponenta zodpovědná za rozhodování o umístění podů na konkrétní nody.
-- Vyhodnocuje výběr nejvhodnější node na základě dostupných zdrojů, definovaných politik a pravidel.
+- Vyhodnocuje výběr nejvhodnější uzel (node) na základě dostupných zdrojů, definovaných politik a pravidel.
 
 ### kube-controller-manager
 - Spravuje kontrolery, které implementují řídicí logiku chování Kubernetes API. Mezi typické funkce patří například:
@@ -72,7 +72,7 @@ Hybridní přístup: WSL (WSL 2 má vlastní kernel, ale využívá kontejnerov�
 etcd je distribuovaná databáze, která se v Kubernetes používá k ukládání stavu clusteru a jeho konfigurace.
 - Při vytvoření nového podu nebo jiného objektu v Kubernetes API server zapíše tuto změnu do etcd.
 - Řadiče (Controllers) a plánovač (Scheduler) čtou informace z etcd (prostřednictvím API serveru) a na základě těchto informací provádějí příslušné akce (například správa replik a Secretů, monitorování nodů, přiřazování podů k nodům, vyvažování zátěže mezi nody).
-- etcd běží jako cluster s více nody, kde jeden node funguje jako leader a ostatní jako followeři, kteří synchronizují data. 
+- etcd běží jako cluster s více uzly (nodes), kde jeden uzel funguje jako leader a ostatní jako followeři, kteří synchronizují data. 
     - Je nezbytné zajistit vysokou dostupnost (HA) a prevenci selhání jednoho bodu (SPoF), protože API server je závislý na etcd a bez něj by nemohl provádět žádné změny v clusteru – například škálování, nasazování nebo aktualizace.
 
 ---
@@ -143,7 +143,7 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 
 ## Typy Služeb (Service)
 - **ClusterIP:** Zpřístupnění aplikace na interní IP adrese. Vhodné pro interní služby, dostupné pouze uvnitř clusteru.
-- **NodePort:** Kromě ClusterIP přidává možnost externího přístupu přes statický port na IP adrese každé node v clusteru (`IP:static_port`).
+- **NodePort:** Kromě ClusterIP přidává možnost externího přístupu přes statický port na IP adrese každém uzlu (node) v clusteru (`IP:static_port`).
 - **LoadBalancer:** Zpřístupnění přes externí Load Balancer s vlastní veřejnou IP adresou. Ideální pro produkční aplikace s vysokým provozem.
 - **ExternalName:** Překlad na externí DNS název bez proxy nebo load balancingu. Používá se pro připojení ke službám mimo Kubernetes cluster (například externí služby nebo služby hostované jinde). Provoz je směrován přímo na externí hostname prostřednictvím CNAME záznamu poskytovaného DNS serverem Kubernetes.
 

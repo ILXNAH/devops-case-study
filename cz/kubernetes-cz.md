@@ -171,70 +171,66 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 
 ## Instalace clusteru v on-prem prostředí
 Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main/cz/kubernetes-cz.md#kubernetes-1) clusteru v on-premise prostředí postupujte podle následujících kroků:
-1. **Přípravné kroky**:
-    - Aktualizujte systémové balíčky na všech uzlech clusteru.
-    - Nainstalujte container runtime, například Docker nebo containerd.
-    - Nainstalujte [nástroje](https://github.com/ILXNAH/devops-case-study/blob/main/cz/kubernetes-cz.md#kubectl-a-kubelet) `kubeadm`, `kubelet` a `kubectl` na všech uzlech.
+### 1. **Přípravné kroky**:
+- Aktualizujte systémové balíčky na všech uzlech clusteru.
+- Nainstalujte container runtime, například Docker nebo containerd.
+- Nainstalujte [nástroje](https://github.com/ILXNAH/devops-case-study/blob/main/cz/kubernetes-cz.md#kubectl-a-kubelet) `kubeadm`, `kubelet` a `kubectl` na všech uzlech.
 
-2. **Inicializace řídícího uzlu (Master Node)**:
-    - Na řídícím uzlu inicializujte Kubernetes cluster pomocí příkazu:
+### 2. **Inicializace řídícího uzlu (Master Node)**: <br> 
+Na řídícím uzlu inicializujte Kubernetes cluster pomocí příkazu:
+
+```bash
+kubeadm init
+```
+
+### 3. **Konfigurace `kubectl`**: <br> 
+Pro konfiguraci nástroje `kubectl` zkopírujte konfigurační soubor administrátora a nastavte správná oprávnění:
+
+```bash
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+### 4. **Konfigurace síťování (CNI pluginy)**:
+- Nakonfigurujte síťové rozhraní clusteru. Doporučená řešení zahrnují: Calico, Flannel, Weave Net. <br> 
+Postup instalace CNI se liší v závislosti na zvoleném řešení.
+
+### 5. **Připojení pracovních uzlů (Worker Nodes)**:
+- Na pracovních uzlech se připojte ke clusteru pomocí příkazu `kubeadm join`. Příkaz `kubeadm join` se generuje po úspěšné inicializaci řídícího uzlu (`kubeadm init`) v unikátním formátu: <br>
+adresa řídícího uzlu + token pro autorizaci + hash CA certifikátu.
+- Po připojení uzlů ověřte funkčnost clusteru pomocí nástroje kubectl z řídícího uzlu:
+
+    ```bash
+    kubectl get nodes
+    kubectl get pods --all-namespaces
+    ```
+
+### 6. **Instalace volitelných nástrojů**: <br> 
+Pro rozšíření funkcionality clusteru nainstalujte volitelné nástroje, jako například:
+    - [Monitoring](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md) ([Prometheus](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md#prometheus), Grafana)
+    - Logování (Elasticsearch, Fluentd, Kibana - EFK stack)
+    - Ingress kontrolery (nginx-ingress-controller, Traefik)
+
+### 7. **Nasazení aplikace**: <br> 
+Pro nasazení aplikace do clusteru:
+    - Vytvořte Deployment definici a aplikujte ji pomocí `kubectl create deployment`:
 
         ```bash
-        kubeadm init
+        kubectl create deployment <název-deploymentu> --image=<jméno-image>
         ```
-
-3. **Konfigurace `kubectl`**:
-    - Pro konfiguraci nástroje `kubectl` zkopírujte konfigurační soubor administrátora a nastavte správná oprávnění:
+    - Vytvořte službu pro zpřístupnění Deploymentu a exponujte ji na požadovaném portu pomocí `kubectl expose deployment`: 
 
         ```bash
-        mkdir -p $HOME/.kube
-        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-        sudo chown $(id -u):$(id -g) $HOME/.kube/config
+        kubectl expose deployment <název-deploymentu> --port=<port> --target-port=<cílový-port> --type=LoadBalancer (nebo ClusterIP/NodePort)
         ```
 
-4. **Konfigurace síťování (CNI pluginy)**:
-    - Nakonfigurujte síťové rozhraní clusteru. Doporučená řešení zahrnují:
-        - Calico
-        - Flannel
-        - Weave Net
-    - Postup instalace CNI se liší v závislosti na zvoleném řešení.
-
-5. **Připojení pracovních uzlů (Worker Nodes)**:
-    - Na pracovních uzlech se připojte ke clusteru pomocí příkazu `kubeadm join`. <br> 
-    Příkaz `kubeadm join` se generuje po úspěšné inicializaci řídícího uzlu (`kubeadm init`) v unikátním formátu: <br> 
-    adresa řídícího uzlu + token pro autorizaci + hash CA certifikátu.
-    - Po připojení uzlů ověřte funkčnost clusteru pomocí nástroje kubectl z řídícího uzlu:
-
-        ```bash
-        kubectl get nodes
-        kubectl get pods --all-namespaces
-        ```
-
-6. **Instalace volitelných nástrojů**:
-    - Pro rozšíření funkcionality clusteru nainstalujte volitelné nástroje, jako například:
-        - [Monitoring](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md) ([Prometheus](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md#prometheus), Grafana)
-        - Logování (Elasticsearch, Fluentd, Kibana - EFK stack)
-        - Ingress kontrolery (nginx-ingress-controller, Traefik)
-
-7. **Nasazení aplikace**:
-    - Pro nasazení aplikace do clusteru:
-        - Vytvořte Deployment definici a aplikujte ji pomocí `kubectl create deployment`:
-
-            ```bash
-            kubectl create deployment <název-deploymentu> --image=<jméno-image>
-            ```
-        - Vytvořte službu pro zpřístupnění Deploymentu a exponujte ji na požadovaném portu pomocí `kubectl expose deployment`: 
-
-            ```bash
-            kubectl expose deployment <název-deploymentu> --port=<port> --target-port=<cílový-port> --type=LoadBalancer (nebo ClusterIP/NodePort)
-            ```
-
-8. **Konfigurace clusteru**:
-    - Nakonfigurujte další aspekty clusteru dle vašich požadavků, například:
-        - Bezpečnostní politiky (NetworkPolicies, PodSecurityPolicies)
-        - Centralizované logování
-        - Strategie zálohování a obnovy ([Disaster Recovery](https://github.com/ILXNAH/devops-case-study/blob/main/cz/bezpe%C4%8Dnost.md#zotaven%C3%AD-po-hav%C3%A1rii-disaster-recovery-pro-kubernetes-cluster)) clusteru
-        - [Monitoring](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md) a alerting
+### 8. **Konfigurace clusteru**: <br> 
+Nakonfigurujte další aspekty clusteru dle vašich požadavků, například:
+    - Bezpečnostní politiky (NetworkPolicies, PodSecurityPolicies)
+    - Centralizované logování
+    - Strategie zálohování a obnovy ([Disaster Recovery](https://github.com/ILXNAH/devops-case-study/blob/main/cz/bezpe%C4%8Dnost.md#zotaven%C3%AD-po-hav%C3%A1rii-disaster-recovery-pro-kubernetes-cluster)) clusteru
+    - [Monitoring](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md) a alerting
 
 ---
 

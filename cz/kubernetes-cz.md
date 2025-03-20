@@ -241,12 +241,12 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
 ## Upgrade clusteru v on-prem prostředí
 Pro upgrade [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main/cz/kubernetes-cz.md#kubernetes-1) clusteru v on-premise prostředí postupujte podle následujících kroků:
 ### 1. **Ověření aktuální verze a kompatibility:** <br>
-    Zjistěte aktuálně nainstalovanou verzi Kubernetes clusteru pomocí příkazu:
+Zjistěte aktuálně nainstalovanou verzi Kubernetes clusteru pomocí příkazu:
     
     ```bash
     kubectl version
     ```
-    Ujistěte se, že nová verze Kubernetes je kompatibilní se stávající konfigurací a komponentami, jako jsou `kubeadm`, `kubelet`, `kubectl`, pluginy, kontrolery a další. Prostudujte si dokumentaci k upgradu pro danou verzi.
+Ujistěte se, že nová verze Kubernetes je kompatibilní se stávající konfigurací a komponentami, jako jsou `kubeadm`, `kubelet`, `kubectl`, pluginy, kontrolery a další. Prostudujte si dokumentaci k upgradu pro danou verzi.
 
 ### 2. **Záloha etcd a aplikačních dat:**
 - **Zálohujte etcd databázi:** <br>

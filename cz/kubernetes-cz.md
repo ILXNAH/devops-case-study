@@ -17,6 +17,8 @@
 14. [Instalace clusteru v on-prem prostředí](#instalace-clusteru-v-on-prem-prostředí)
 15. [Upgrade clusteru v on-prem prostředí](#upgrade-clusteru-v-on-prem-prostředí)
 
+---
+
 ## Kontejner, virtuální stroj (VM) a rozdíly mezi nimi
 ### Kontejner
 Kontejner je balíček obsahující mikroslužbu spolu s jejími závislostmi a konfiguracemi. 

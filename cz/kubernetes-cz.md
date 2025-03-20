@@ -299,7 +299,7 @@ Ujistěte se, že všechny uzly jsou ve stavu `Ready` a všechny kritické pody 
     kubectl get pods --all-namespaces
     ```
 - **Prohlédněte logy:** <br>
-Zkontrolujte logy klíčových komponent Kubernetes (apiserver, scheduler, kube-controller-manager) a logy vašich aplikací pro případné chyby nebo varování.
+Zkontrolujte logy klíčových komponent (apiserver, scheduler, kube-controller-manager) a logy aplikací pro příp. chyby nebo varování.
 
 ### 6. **Upgrade ostatních komponent a nástrojů:**
 - **CNI plugin:** <br>

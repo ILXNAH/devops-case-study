@@ -162,7 +162,7 @@ Spravuje kontrolery, které implementují řídicí logiku chování Kubernetes 
 ---
 
 ## Kubernetes operátory a jejich funkce
-- **Kubernetes operátor** je speciální druh **aplikačně specifického kontroleru**, který umožňuje **automatizaci správy aplikací a zdrojů** v Kubernetes.  
+**Kubernetes operátor** je speciální druh **aplikačně specifického kontroleru**, který umožňuje **automatizaci správy aplikací a zdrojů** v Kubernetes.  
 - **Hlavní účel** operátorů je zajistit **soulad aktuálního stavu aplikace v clusteru s požadovaným stavem**, který je definován v konfiguraci.  
 - Operátoři **rozšiřují funkcionalitu Kubernetes API** přidáním **vlastních kontrolerů a Custom Resource Definitions (CRD)**.  
 - Typické **funkce operátorů** zahrnují:

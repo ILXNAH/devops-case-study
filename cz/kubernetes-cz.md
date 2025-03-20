@@ -239,7 +239,80 @@ Pro instalaci [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main
 ---
 
 ## Upgrade clusteru v on-prem prostředí
-- Záloha etcd a aplikačních dat.
-- Postupná aktualizace kubeadm, kubelet a kubectl.
-- Restart kubelet na všech nodech.
-- Otestování a monitoring clusteru po aktualizaci.
+Pro upgrade [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main/cz/kubernetes-cz.md#kubernetes-1) clusteru v on-premise prostředí postupujte podle následujících kroků:
+1. **Ověření aktuální verze a kompatibility:**
+    - Zjistěte aktuálně nainstalovanou verzi Kubernetes clusteru pomocí příkazu:
+      
+      ```bash
+      kubectl version
+      ```
+    - Ujistěte se, že nová verze Kubernetes je kompatibilní se stávající konfigurací a komponentami, <br> 
+    jako jsou `kubeadm`, `kubelet`, `kubectl`, pluginy, kontrolery a další. <br> 
+    Prostudujte si dokumentaci k upgradu pro danou verzi.
+
+2. **Záloha etcd a aplikačních dat:**
+    - **Zálohujte etcd databázi:** 
+      - Etcd uchovává veškerý stav vašeho Kubernetes clusteru. <br> 
+      Záloha etcd je klíčová pro obnovu v případě problémů během upgradu <br> 
+      Postup zálohy etcd se liší v závislosti na vaší instalaci.
+    - **Zálohujte aplikační data a externí úložiště:**
+      - Pokud aplikace používají perzistentní data nebo externí db, ujistěte se, že máte funkční zálohy i těchto dat.
+    - **Export manifestů kritických aplikací:**
+      - Pro snadnější obnovu klíčových aplikací exportujte jejich manifesty:
+
+        ```bash
+        kubectl get all -A -o yaml > cluster-backup.yaml
+        ```
+
+3. **Upgrade řídících uzlů (Master Nodes):**
+    - **Upgradujte `kubeadm`:**
+      - Na každém řídícím uzlu postupně upgradujte nástroj `kubeadm` na cílovou verzi.
+    - **Upgradujte `kubelet` a `kubectl`:**
+      - Následně na stejném řídícím uzlu upgradujte balíčky `kubelet` a `kubectl`.
+    - **Restartujte `kubelet`:**
+      - Po upgradu restartujte službu `kubelet` na řídícím uzlu.
+    - **Postupujte postupně:**
+      - Opakujte tyto kroky pro všechny řídící uzly clusteru, ideálně po jednom, abyste zajistili kontinuitu řízení clusteru.
+
+4. **Upgrade pracovních uzlů (Worker Nodes):**
+    - **Odstraňte uzel z provozu (Drain):** 
+      - Před upgradem pracovního uzlu doporučuje se ho bezpečně odstranit z provozu, aby se na něj nepřesouvaly nové pody a stávající se mohly korektně ukončit nebo přesunout:
+        
+        ```bash
+        kubectl drain <název-uzlu> --ignore-daemonsets --delete-local-data
+        ```
+    - **Upgradujte `kubeadm`, `kubelet` a `kubectl`:**
+      - Na odpojeném pracovním uzlu upgradujte `kubeadm`, `kubelet` a `kubectl` na cílovou verzi, podobně jako u řídících uzlů.
+    - **Restartujte `kubelet`:** 
+      - Restartujte službu `kubelet` na pracovním uzlu.
+    - **Vraťte uzel do clusteru (Uncordon):** 
+      - Po upgradu vraťte uzel zpět do clusteru:
+        
+        ```bash
+        kubectl uncordon <název-uzlu>
+        ```
+    - **Postupujte postupně:** 
+      - Opakujte tyto kroky pro všechny pracovní uzly clusteru.
+
+5. **Ověření funkčnosti po upgradu:**
+    - **Zkontrolujte stav uzlů a podů:** 
+      - Ujistěte se, že všechny uzly jsou ve stavu `Ready` a všechny kritické pody (včetně systémových podů) jsou ve stavu `Running`:
+        
+        ```bash
+        kubectl get nodes
+        kubectl get pods --all-namespaces
+        ```
+    - **Prohlédněte logy:** 
+      - Zkontrolujte logy klíčových komponent Kubernetes (apiserver, scheduler, kube-controller-manager) a logy vašich aplikací pro případné chyby nebo varování.
+
+6. **Upgrade ostatních komponent a nástrojů:**
+    - **CNI plugin:** 
+      - Upgradujte CNI plugin (např. Calico, Flannel) podle dokumentace daného pluginu, aby byl kompatibilní s novou verzí Kubernetes.
+    - **Ingress kontrolery:** 
+    - - Upgradujte Ingress kontrolery (např. nginx-ingress-controller, Traefik).
+    - **Monitoring a logovací systémy:** 
+      - Upgradujte systémy pro monitoring (Prometheus, Grafana) a logování (EFK stack, atd.).
+    - **Další nástroje a operátory:**
+      - Upgradujte všechny další nástroje, operátory a Custom Resource Definitions (CRDs), které používáte v clusteru, a ujistěte se o jejich kompatibilitě s novou verzí Kubernetes.
+
+**Pozn.:** Upgrade Kubernetes clusteru je komplexní proces. Vždy si pečlivě prostudujte oficiální dokumentaci Kubernetes pro danou verzi a důkladně otestujte upgrade v testovacím prostředí před provedením upgradu v produkci.

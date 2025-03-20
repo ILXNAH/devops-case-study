@@ -2,7 +2,7 @@
 
 ## Obsah
 1. [GitOps - definice a funkce](#gitops---definice-a-funkce)
-2. [Helm a jeho využití](#helm-a-jeho-vyuziti)
+2. [Helm a jeho využití](#helm-a-jeho-využití)
    - [Funkce a výhody Helmu](#funkce-a-vyhody-helmu)
    - [Struktura Helmu](#struktura-helmu)
    - [Praktické využití Helmu](#prakticke-vyuziti-helmu)

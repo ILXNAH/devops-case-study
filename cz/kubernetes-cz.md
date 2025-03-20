@@ -255,10 +255,10 @@ Pro upgrade [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main/c
     Pokud aplikace používají perzistentní data nebo externí db, ujistěte se, že máte funkční zálohy i těchto dat.
     - **Export manifestů kritických aplikací:** <br>
     Pro snadnější obnovu klíčových aplikací exportujte jejich manifesty:
-    
-    ```bash
-    kubectl get all -A -o yaml > cluster-backup.yaml
-    ```
+        
+        ```bash
+        kubectl get all -A -o yaml > cluster-backup.yaml
+        ```
 
 3. **Upgrade řídících uzlů (Master Nodes):**
     - **Upgradujte `kubeadm`:**

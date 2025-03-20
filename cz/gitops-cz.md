@@ -1,5 +1,18 @@
 # GitOps
 
+## Obsah
+1. [GitOps - definice a funkce](#gitops---definice-a-funkce)
+2. [Helm a jeho využití](#helm-a-jeho-vyuziti)
+   - [Funkce a výhody Helmu](#funkce-a-vyhody-helmu)
+   - [Struktura Helmu](#struktura-helmu)
+   - [Praktické využití Helmu](#prakticke-vyuziti-helmu)
+     - [Nasazení aplikace pomocí Helmu](#nasazeni-aplikace-pomoci-helmu)
+     - [Aktualizace aplikace pomocí Helmu](#aktualizace-aplikace-pomoci-helmu)
+     - [Odstranění aplikace spravované Helmem](#odstraneni-aplikace-spravovane-helmem)
+3. [ArgoCD a jeho role v CI/CD pipeline](#argocd-a-jeho-role-v-cicd-pipeline)
+
+---
+
 ## GitOps - definice a funkce
 GitOps je jedna z metodologií řízení **DevOps** (vývoje softwaru a provozu aplikací), která je založená na principu **Everything as Code**.  
 Celý stav infrastruktury a aplikací (**konfigurace, manifesty Kubernetes, Infrastructure as Code**) je popsán a uložen v open-source verzovacím systému (**VCS**) **Git**, tedy v Git repozitáři, který slouží jako jediný zdroj pravdy (**SSOT – Single Source of Truth**).

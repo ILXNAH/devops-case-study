@@ -249,16 +249,16 @@ Pro upgrade [Kubernetes](https://github.com/ILXNAH/devops-case-study/blob/main/c
     Ujistěte se, že nová verze Kubernetes je kompatibilní se stávající konfigurací a komponentami, jako jsou `kubeadm`, `kubelet`, `kubectl`, pluginy, kontrolery a další. Prostudujte si dokumentaci k upgradu pro danou verzi.
 
 2. **Záloha etcd a aplikačních dat:**
-    - **Zálohujte etcd databázi:** <br>
-    Etcd uchovává veškerý stav vašeho Kubernetes clusteru. Záloha etcd je klíčová pro obnovu v případě problémů během upgradu. Postup zálohy etcd se liší v závislosti na vaší instalaci.
-    - **Zálohujte aplikační data a externí úložiště:** <br>
-    Pokud aplikace používají perzistentní data nebo externí db, ujistěte se, že máte funkční zálohy i těchto dat.
-    - **Export manifestů kritických aplikací:** <br>
-    Pro snadnější obnovu klíčových aplikací exportujte jejich manifesty:
-        
-        ```bash
-        kubectl get all -A -o yaml > cluster-backup.yaml
-        ```
+- **Zálohujte etcd databázi:** <br>
+Etcd uchovává veškerý stav vašeho Kubernetes clusteru. Záloha etcd je klíčová pro obnovu v případě problémů během upgradu. Postup zálohy etcd se liší v závislosti na vaší instalaci.
+- **Zálohujte aplikační data a externí úložiště:** <br>
+Pokud aplikace používají perzistentní data nebo externí db, ujistěte se, že máte funkční zálohy i těchto dat.
+- **Export manifestů kritických aplikací:** <br>
+Pro snadnější obnovu klíčových aplikací exportujte jejich manifesty:
+    
+    ```bash
+    kubectl get all -A -o yaml > cluster-backup.yaml
+    ```
 
 3. **Upgrade řídících uzlů (Master Nodes):**
     - **Upgradujte `kubeadm`:**

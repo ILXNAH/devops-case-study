@@ -3,12 +3,12 @@
 ## Obsah
 1. [GitOps - definice a funkce](#gitops---definice-a-funkce)
 2. [Helm a jeho využití](#helm-a-jeho-využití)
-   - [Funkce a výhody Helmu](#funkce-a-vyhody-helmu)
+   - [Funkce a výhody Helmu](#funkce-a-výhody-helmu)
    - [Struktura Helmu](#struktura-helmu)
-   - [Praktické využití Helmu](#prakticke-vyuziti-helmu)
-     - [Nasazení aplikace pomocí Helmu](#nasazeni-aplikace-pomoci-helmu)
-     - [Aktualizace aplikace pomocí Helmu](#aktualizace-aplikace-pomoci-helmu)
-     - [Odstranění aplikace spravované Helmem](#odstraneni-aplikace-spravovane-helmem)
+   - [Praktické využití Helmu](#praktické-využití-helmu)
+     - [Nasazení aplikace pomocí Helmu](#nasazení-aplikace-pomocí-helmu)
+     - [Aktualizace aplikace pomocí Helmu](#aktualizace-aplikace-pomocí-helmu)
+     - [Odstranění aplikace spravované Helmem](#odstranění-aplikace-spravované-helmem)
 3. [ArgoCD a jeho role v CI/CD pipeline](#argocd-a-jeho-role-v-cicd-pipeline)
 
 ---

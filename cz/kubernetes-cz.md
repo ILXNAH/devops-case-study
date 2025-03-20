@@ -2,7 +2,7 @@
 
 ## Obsah
 1. [Kontejner, virtuální stroj (VM) a rozdíly mezi nimi](#kontejner-virtuální-stroj-vm-a-rozdíly-mezi-nimi)
-2. [Kubernetes](#kubernetes#kubernetes)
+2. [Kubernetes](#kubernetes-kubernetes)
 3. [Základní objekty v Kubernetes](#základní-objekty-v-kubernetes)
 4. [Image vs. Kontejner](#image-vs-kontejner)
 5. [Pod vs. Kontejner](#pod-vs-kontejner)

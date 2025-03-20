@@ -96,6 +96,7 @@ Seskupení kontejnerů v podu je výhodné pro:
 
 ### kube-controller-manager
 - Spravuje kontrolery, které implementují řídicí logiku chování Kubernetes API. Mezi typické funkce patří například:
+
     - Správa počtu replik podů.
     - Nasazování aplikací, verzování a škálování.
     - Správa, monitorování, kontrola a aktualizace stavu nodů, zajištění dostupnosti podů (včetně migrace při selhání nodu).

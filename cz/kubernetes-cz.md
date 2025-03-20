@@ -216,21 +216,21 @@ Pro rozšíření funkcionality clusteru nainstalujte volitelné nástroje, jako
 Pro nasazení aplikace do clusteru:
     - Vytvořte Deployment definici a aplikujte ji pomocí `kubectl create deployment`:
 
-        ```bash
-        kubectl create deployment <název-deploymentu> --image=<jméno-image>
-        ```
+    ```bash
+    kubectl create deployment <název-deploymentu> --image=<jméno-image>
+    ```
     - Vytvořte službu pro zpřístupnění Deploymentu a exponujte ji na požadovaném portu pomocí `kubectl expose deployment`: 
 
-        ```bash
-        kubectl expose deployment <název-deploymentu> --port=<port> --target-port=<cílový-port> --type=LoadBalancer (nebo ClusterIP/NodePort)
-        ```
+    ```bash
+    kubectl expose deployment <název-deploymentu> --port=<port> --target-port=<cílový-port> --type=LoadBalancer (nebo ClusterIP/NodePort)
+    ```
 
 ### 8. **Konfigurace clusteru**: <br> 
 Nakonfigurujte další aspekty clusteru dle vašich požadavků, například:
-    - Bezpečnostní politiky (NetworkPolicies, PodSecurityPolicies)
-    - Centralizované logování
-    - Strategie zálohování a obnovy ([Disaster Recovery](https://github.com/ILXNAH/devops-case-study/blob/main/cz/bezpe%C4%8Dnost.md#zotaven%C3%AD-po-hav%C3%A1rii-disaster-recovery-pro-kubernetes-cluster)) clusteru
-    - [Monitoring](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md) a alerting
+- Bezpečnostní politiky (NetworkPolicies, PodSecurityPolicies)
+- Centralizované logování
+- Strategie zálohování a obnovy ([Disaster Recovery](https://github.com/ILXNAH/devops-case-study/blob/main/cz/bezpe%C4%8Dnost.md#zotaven%C3%AD-po-hav%C3%A1rii-disaster-recovery-pro-kubernetes-cluster)) clusteru
+- [Monitoring](https://github.com/ILXNAH/devops-case-study/blob/main/cz/monitoring-cz.md) a alerting
 
 ---
 

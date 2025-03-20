@@ -121,12 +121,12 @@ Seskupení kontejnerů v podu je výhodné pro:
 ---
 
 ## Součásti řídicí roviny Kubernetes (Control Plane)
-### kube-apiserver
+### 1. kube-apiserver
 - Představuje centrální bod pro interakci s clusterem prostřednictvím HTTP API.
 - Zajišťuje správu autentizace, autorizace a validaci příchozích požadavků.
 - Ukládá informace o stavu clusteru do etcd.
 
-### etcd
+### 2. etcd
 - Jedná se o nerelační databázi, která slouží k ukládání všech dat clusteru, včetně jeho konfigurace, aktuálního stavu, politik a metadat.
 - Zajišťuje konzistentní a dostupný stav clusteru.
 - Je to kriticky důležitá komponenta pro obnovu a celkovou správu clusteru.
@@ -138,17 +138,17 @@ etcd je distribuovaná databáze, která se v Kubernetes používá k ukládán�
 - etcd běží jako cluster s více uzly, kde jeden uzel funguje jako leader a ostatní jako followeři, kteří synchronizují data. 
     - Je nezbytné zajistit vysokou dostupnost (HA) a prevenci selhání jednoho bodu (SPoF), protože API server je závislý na etcd a bez něj by nemohl provádět žádné změny v clusteru – například škálování, nasazování nebo aktualizace.
 
-### kube-scheduler
+### 3. kube-scheduler
 - Komponenta zodpovědná za rozhodování o umístění podů na konkrétní nody.
 - Vyhodnocuje výběr nejvhodnější uzel (node) na základě dostupných zdrojů, definovaných politik a pravidel.
 
-### kube-controller-manager
+### 4. kube-controller-manager
 Spravuje kontrolery, které implementují řídicí logiku chování Kubernetes API. Mezi typické funkce patří například:
 - Správa počtu replik podů.
 - Nasazování aplikací, verzování a škálování.
 - Správa, monitorování, kontrola a aktualizace stavu nodů, zajištění dostupnosti podů (včetně migrace při selhání nodu).
 
-### cloud-controller-manager
+### 5. cloud-controller-manager
 - Slouží k zajištění integrace Kubernetes s cloudovými poskytovateli (CSP) – volitelná komponenta.
 - Spravuje cloudové zdroje, jako jsou load balancery, disky a síťové adresy.
 

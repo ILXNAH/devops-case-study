@@ -291,24 +291,24 @@ Po upgradu vraťte uzel zpět do clusteru:
 Opakujte tyto kroky pro všechny pracovní uzly clusteru.
 
 ### 5. **Ověření funkčnosti po upgradu:**
-    - **Zkontrolujte stav uzlů a podů:** 
-      - Ujistěte se, že všechny uzly jsou ve stavu `Ready` a všechny kritické pody (včetně systémových podů) jsou ve stavu `Running`:
-        
-        ```bash
-        kubectl get nodes
-        kubectl get pods --all-namespaces
-        ```
-    - **Prohlédněte logy:** 
-      - Zkontrolujte logy klíčových komponent Kubernetes (apiserver, scheduler, kube-controller-manager) a logy vašich aplikací pro případné chyby nebo varování.
+- **Zkontrolujte stav uzlů a podů:** <br>
+Ujistěte se, že všechny uzly jsou ve stavu `Ready` a všechny kritické pody (včetně systémových podů) jsou ve stavu `Running`:
+    
+    ```bash
+    kubectl get nodes
+    kubectl get pods --all-namespaces
+    ```
+- **Prohlédněte logy:** <br>
+Zkontrolujte logy klíčových komponent Kubernetes (apiserver, scheduler, kube-controller-manager) a logy vašich aplikací pro případné chyby nebo varování.
 
 ### 6. **Upgrade ostatních komponent a nástrojů:**
-    - **CNI plugin:** 
-      - Upgradujte CNI plugin (např. Calico, Flannel) podle dokumentace daného pluginu, aby byl kompatibilní s novou verzí Kubernetes.
-    - **Ingress kontrolery:** 
-    - - Upgradujte Ingress kontrolery (např. nginx-ingress-controller, Traefik).
-    - **Monitoring a logovací systémy:** 
-      - Upgradujte systémy pro monitoring (Prometheus, Grafana) a logování (EFK stack, atd.).
-    - **Další nástroje a operátory:**
-      - Upgradujte všechny další nástroje, operátory a Custom Resource Definitions (CRDs), které používáte v clusteru, a ujistěte se o jejich kompatibilitě s novou verzí Kubernetes.
+- **CNI plugin:** <br>
+Upgradujte CNI plugin (např. Calico, Flannel) podle dokumentace daného pluginu, aby byl kompatibilní s novou verzí Kubernetes.
+- **Ingress kontrolery:** <br>
+Upgradujte Ingress kontrolery (např. nginx-ingress-controller, Traefik).
+- **Monitoring a logovací systémy:** <br> 
+Upgradujte systémy pro monitoring (Prometheus, Grafana) a logování (EFK stack, atd.).
+- **Další nástroje a operátory:** <br>
+Upgradujte všechny další nástroje, operátory a Custom Resource Definitions (CRDs), které používáte v clusteru, a ujistěte se o jejich kompatibilitě s novou verzí Kubernetes.
 
 **Pozn.:** Upgrade Kubernetes clusteru je komplexní proces. Vždy si pečlivě prostudujte oficiální dokumentaci Kubernetes pro danou verzi a důkladně otestujte upgrade v testovacím prostředí před provedením upgradu v produkci.
